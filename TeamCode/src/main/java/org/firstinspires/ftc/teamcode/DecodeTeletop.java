@@ -31,8 +31,7 @@ public class DecodeTeletop extends LinearOpMode{
     boolean chuvadepogchamp;
     boolean rb;
     boolean lb;
-
-
+    int hahaha;;
 
     private void runPIDShooter() {
         double pidVelocityD;
