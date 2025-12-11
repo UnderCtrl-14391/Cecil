@@ -12,15 +12,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 @TeleOp
 public class DecodeTeletop extends LinearOpMode{
-    private DcMotor direita;
-    private DcMotor direitaTras;
-    private DcMotor esquerda;
-    private DcMotor esquerdaTras;
-    private DcMotor shooterD;
-    private DcMotor shooterE;
-    private CRServo index2;
-    private CRServo index1;
-    private DcMotor intakemotor;
     double rapido;
     float rx;
     double denominator;
@@ -33,23 +24,29 @@ public class DecodeTeletop extends LinearOpMode{
     boolean lb;
     int hahaha;;
 
+
+    HardwareMap hardwareMapMotors = new HardwareMap(hardwareMap);
+
+    Shooter shooter_sub = new Shooter(hardwareMapMotors);
+
     private void runPIDShooter() {
         double pidVelocityD;
         double pidVelocityE;
-        pidVelocityE = p (((DcMotorEx)shooterE));targetVelocity( - targetVelocity);
-        pidVelocityD = p (((DcMotorEx)shooterD));targetVelocity( - targetVelocity);
-        ((DcMotorEx) shooterD).setVelocity(pidVelocityD);
-        ((DcMotorEx) shooterE).setVelocity(pidVelocityE);
+        pidVelocityE = p (((DcMotorEx) hardwareMapMotors.shooterE));targetVelocity( - targetVelocity);
+        pidVelocityD = p (((DcMotorEx)hardwareMapMotors.shooterD));targetVelocity( - targetVelocity);
+        ((DcMotorEx) hardwareMapMotors.shooterD).setVelocity(pidVelocityD);
+        ((DcMotorEx) hardwareMapMotors.shooterE).setVelocity(pidVelocityE);
         {
             if (gamepad2.x) {
                 targetVelocity = (1000 * 60) / 45;
                 runPIDShooter();
             }
             if (gamepad2.y) {
-                shooterD.setPower(0);
-                shooterE.setPower(0);
-                index2.setPower(0);
-                index1.setPower(0);
+                shooter_sub.stop();
+                hardwareMapMotors.shooterD.setPower(0);
+                hardwareMapMotors.shooterE.setPower(0);
+                hardwareMapMotors.index2.setPower(0);
+                hardwareMapMotors.index1.setPower(0);
             }
             if (gamepad2.a) {
                 targetVelocity = (2600 * 60) / 45;
@@ -65,23 +62,13 @@ public class DecodeTeletop extends LinearOpMode{
             boolean lb;
             boolean chuvadepogchamp;
 
-            shooterD = hardwareMap.get(DcMotor.class, "shooterD");
-            shooterE = hardwareMap.get(DcMotor.class, "shooterE");
-            index2 = hardwareMap.get(CRServo.class, "index2");
-            index1 = hardwareMap.get(CRServo.class, "index1");
-            direitaTras=hardwareMap.get(DcMotor.class, "direitaTras");
-            direita = hardwareMap.get(DcMotor.class, "direita");
-            esquerdaTras = hardwareMap.get(DcMotor.class , "esquerdaTras");
-            esquerda = hardwareMap.get(DcMotor.class, "esquerda");
-            intakemotor = hardwareMap.get(DcMotor.class, "intake");
-
             targetVelocity = (4000 * 60) / 45;
             targetVelocity = (2800 * 60) / 45;
             p = 1;
             int f = 1;
             b = false;
-            shooterD.setDirection(DcMotor.Direction.FORWARD);
-            shooterE.setDirection(DcMotor.Direction.REVERSE);
+            hardwareMapMotors.shooterD.setDirection(DcMotor.Direction.FORWARD);
+            hardwareMapMotors.shooterE.setDirection(DcMotor.Direction.REVERSE);
             intake = false;
             rb = false;
             lb = false;
@@ -117,10 +104,10 @@ public class DecodeTeletop extends LinearOpMode{
             y = -gamepad1.left_stick_y;
             x = gamepad1.left_stick_x * 1.1;
             rx = gamepad1.right_stick_x;
-            esquerda.setPower((y + x + rx) * -0.9);
-            esquerdaTras.setPower(((y - x) + rx) * 0.9);
-            direita.setPower(((y - x) - rx) * 0.9);
-            direitaTras.setPower(((y + x) - rx) * 0.9);
+            hardwareMapMotors.esquerda.setPower((y + x + rx) * -0.9);
+            hardwareMapMotors.esquerdaTras.setPower(((y - x) + rx) * 0.9);
+            hardwareMapMotors.direita.setPower(((y - x) - rx) * 0.9);
+            hardwareMapMotors.direitaTras.setPower(((y + x) - rx) * 0.9);
             denominator = JavaUtil.maxOfList(JavaUtil.createListWith(JavaUtil.sumOfList(JavaUtil.createListWith(Math.abs(y), Math.abs(x), Math.abs(rx))), 1));
         }
 
@@ -129,7 +116,7 @@ public class DecodeTeletop extends LinearOpMode{
          */
         boolean intake2;
         {
-            intakemotor.setPower(gamepad2.right_stick_y);
+            hardwareMapMotors.intakemotor.setPower(gamepad2.right_stick_y);
         }
 
         /**
@@ -137,8 +124,8 @@ public class DecodeTeletop extends LinearOpMode{
          */
         boolean index;
         {
-            index2.setPower(-gamepad2.left_stick_y);
-            index1.setPower(gamepad2.left_stick_y);
+            hardwareMapMotors.index2.setPower(-gamepad2.left_stick_y);
+            hardwareMapMotors.index1.setPower(gamepad2.left_stick_y);
             rb = false;
             lb = false;
             rapido = 0.9;
@@ -193,10 +180,10 @@ public class DecodeTeletop extends LinearOpMode{
         x = gamepad1.left_stick_x * Math.cos(-yaw / 180 * Math.PI) + gamepad1.left_stick_y * Math.sin(-yaw/ 180 * Math.PI);
         rx = gamepad1.right_stick_x;
         denominator = JavaUtil.maxOfList(JavaUtil.createListWith(JavaUtil.sumOfList(JavaUtil.createListWith(Math.abs(y), Math.abs(x), Math.abs(rx))), 1));
-        direita.setPower((((y - x) - rx) / denominator) * rapido);
-        direitaTras.setPower((((y + x) - rx) / denominator) * rapido);
-        esquerda.setPower(((y + x + rx) / denominator) * rapido);
-        esquerdaTras.setPower(((y - x) + rx / denominator) * rapido);
+        hardwareMapMotors.direita.setPower((((y - x) - rx) / denominator) * rapido);
+        hardwareMapMotors.direitaTras.setPower((((y + x) - rx) / denominator) * rapido);
+        hardwareMapMotors.esquerda.setPower(((y + x + rx) / denominator) * rapido);
+        hardwareMapMotors.esquerdaTras.setPower(((y - x) + rx / denominator) * rapido);
     }
 
 
