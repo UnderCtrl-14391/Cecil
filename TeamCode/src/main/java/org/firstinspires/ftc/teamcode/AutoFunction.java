@@ -14,7 +14,11 @@ public class AutoFunction {
     public CRServo index1;
     public DcMotor intakemotor;
 
-    public autonomous () {
-
+    public void autonomous (int rightFront , int leftFront , int rightTarget , int leftTarget , int rightPower , int leftPower , int ShooterPower , int index , int intakePower) {
+        direita.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        direitaTras.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        esquerda.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        esquerdaTras.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        direita.setTargetPosition(rightFront);
     }
 }
