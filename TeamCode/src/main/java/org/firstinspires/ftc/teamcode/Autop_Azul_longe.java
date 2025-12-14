@@ -1,4 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
-public class Autop_Azul_longe {
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+@Autonomous
+public class Autop_Azul_longe extends LinearOpMode {
+
+    @Override
+    public void runOpMode() {
+
+    }
 }
