@@ -13,16 +13,16 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
 @TeleOp
 public class DecodeTeletop extends LinearOpMode{
-    private ElapsedTime runtime = new ElapsedTime();
-    private ElapsedTime catatime = new ElapsedTime();
+    private final ElapsedTime runtime = new ElapsedTime();
+    private final ElapsedTime catatime = new ElapsedTime();
 
     public DcMotor left;
     public DcMotor leftTarget;
     public DcMotor right;
     public DcMotor rightTarget;
     public DcMotor intake;
-    public DcMotor catapult1;
-    public DcMotor catapult2;
+    public DcMotor catapulta1;
+    public DcMotor catapulta2;
     public DcMotor fat;
     public double INTAKE_IN_POWER = 1.0;
     public double INTAKE_OUT_POWER = -0.7;
@@ -30,11 +30,24 @@ public class DecodeTeletop extends LinearOpMode{
     public double FAT_UP_POWER = 0.8;
     public double FAT_DOWN_POWER = -0.7;
     public double FAT_OFF_POWER = 0.0;
-    public double CATAPULT_SHOOT_POWER = 1.0;
-    public double CATAPULT_BACK_POWER = -0.8;
-    public double CATAPULT_HOLD_POWER = 0.3;
-    private enum CatapultModes {SHOOT, BACK, HOLD}
-    private enum FatModes {UP, DOWN, OFF};
+    public double CATAPULTA_SHOOT_POWER = 1.0;
+    public double CATAPULTA_BACK_POWER = -0.8;
+    public double CATAPULTA_HOLD_POWER = 0.3;
+    private enum CatapultaModes {SHOOT, BACK, HOLD}
+    private enum FatModes {UP, DOWN, OFF}
+
+    @Override
+    public void runOpMode (){
+        waitForStart();
+        right = hardwareMap.get(DcMotor.class, "right");
+
+
+    }
+
+
+
+
+
 
 
 
