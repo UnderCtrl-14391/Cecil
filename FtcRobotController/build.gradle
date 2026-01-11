@@ -28,8 +28,3 @@ android {
 }
 
 apply from: '../build.dependencies.gradle'
-
-
-dependencies {
-    implementation "com.bylazar:<PRESET>:<VERSION>"
-}
