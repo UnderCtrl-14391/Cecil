@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp
 public class DecodeTeletop extends LinearOpMode{
-    private static final double CATAPULTA_UP_POWER = ;
+    private static final double CATAPULTA_UP_POWER = 0;
     private final ElapsedTime runtime = new ElapsedTime();
     private final ElapsedTime catatime = new ElapsedTime();
 
@@ -29,8 +29,8 @@ public class DecodeTeletop extends LinearOpMode{
     public double CATAPULTA_DOWN_POWER = -0.8;
     public double CATAPULTA_HOLD_POWER = 0.3;
     private enum CatapultaModes {SHOOT, BACK, HOLD;
-        public static final Object DOWN = ;
-        public static final Object UP = ;
+        public static final Object DOWN =0 ;
+        public static final Object UP = 0;
         public double setpower;
     }
     private enum FatModes {UP, DOWN, OFF}
