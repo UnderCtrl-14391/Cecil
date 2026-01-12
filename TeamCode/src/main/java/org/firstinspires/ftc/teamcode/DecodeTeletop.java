@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp
 public class DecodeTeletop extends LinearOpMode{
-    private static final double CATAPULTA_UP_POWER = 0;
+
     private final ElapsedTime runtime = new ElapsedTime();
     private final ElapsedTime catatime = new ElapsedTime();
 
@@ -84,7 +84,7 @@ public class DecodeTeletop extends LinearOpMode{
             double yaw = -gamepad1.left_stick_x;
 
             boolean intakeInButton = gamepad2.left_stick_y > 0.2;
-            boolean intakeOutButton = gamepad2.left_stick_x;
+            float intakeOutButton = gamepad2.left_stick_x;
 
             if (intakeInButton && intakeOutButton) {
                 intakeInButton = false;
