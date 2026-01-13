@@ -96,8 +96,8 @@ public class DecodeTeletop extends LinearOpMode {
             // MECHANISM LOGIC (Gamepad 2)
             
             // Intake
-            boolean intakeInButton = gamepad2.right_trigger > 0.2;
-            boolean intakeOutButton = gamepad2.left_trigger > 0.2;
+            boolean intakeInButton = gamepad2.left_stick_y > 0.2;
+            boolean intakeOutButton = gamepad2.left_stick_x > 0.2;
             double intakePower;
             if (intakeInButton) {
                 intakePower = INTAKE_IN_POWER;
@@ -126,8 +126,8 @@ public class DecodeTeletop extends LinearOpMode {
             fat.setPower(fatPower);
 
             // Catapult
-            boolean catapultUpButton = gamepad2.y;
-            boolean catapultDownButton = gamepad2.a;
+            boolean catapultUpButton = gamepad2.x;
+            boolean catapultDownButton = gamepad2.x;
             CatapultaModes pivotMode;
             if (catapultUpButton) {
                 pivotMode = CatapultaModes.UP;
