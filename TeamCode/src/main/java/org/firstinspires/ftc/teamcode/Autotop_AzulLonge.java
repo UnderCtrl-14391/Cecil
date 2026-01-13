@@ -1,18 +1,18 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous
-public class Autotop_AzulLonge {
-    private com.qualcomm.robotcore.hardware.HardwareMap hardwareMap;
+public class Autotop_AzulLonge extends AutoFunction {
 
     @Override
     public void runOpMode() {
-        Autotop_AzulLonge auto = new Autotop_AzulLonge();
+        // Initialize hardware defined in AutoFunction
+        HardwareMap(hardwareMap);
 
         waitForStart();
-        auto.autonomous(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        
+        // Call the autonomous method defined in AutoFunction
+        autonomous(0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 }

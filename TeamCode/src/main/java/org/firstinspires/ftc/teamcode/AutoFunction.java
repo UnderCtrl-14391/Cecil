@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Autonomous
 public class AutoFunction extends LinearOpMode {
 
-    private com.qualcomm.robotcore.hardware.HardwareMap hardwareMap;
     public DcMotor left;
     public DcMotor right;
     public DcMotor leftT;
@@ -28,20 +27,23 @@ public class AutoFunction extends LinearOpMode {
         fat = hardwareMap.get(DcMotor.class, "fat");
     }
 
-    public void autonomous (int rightFront , int leftFront , int rightTarget , int leftTarget , int rightPower , int leftPower , int intakeP , int catapulta , int catapultaPower) {
+    public void autonomous (int rightFront , int leftFront , int rightTarget , int leftTarget , double rightPower , double leftPower , double intakeP , int catapulta , double catapultaPower) {
         //tração
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        
         right.setTargetPosition(rightFront);
         left.setTargetPosition(leftFront);
         rightT.setTargetPosition(rightTarget);
         leftT.setTargetPosition(leftTarget);
+        
         right.setPower(rightPower);
         rightT.setPower(rightPower);
         left.setPower(leftPower);
         leftT.setPower(leftPower);
+        
         //mecanismos
         intake.setPower(intakeP);
         catapulta1.setTargetPosition(catapulta);
@@ -52,9 +54,10 @@ public class AutoFunction extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        Autotop_AzulLonge auto = new Autotop_AzulLonge();
+        HardwareMap(hardwareMap);
 
         waitForStart();
-        auto.autonomous(0 , 0 , 0, 0, 0, 0, 0, 0, 0);
+        // Call the method directly without creating a new instance
+        autonomous(0 , 0 , 0, 0, 0, 0, 0, 0, 0);
     }
 }
