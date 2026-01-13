@@ -12,5 +12,6 @@ public class Autop_Vermelho_medio extends AutoFunction {
 
         waitForStart();
         autonomous(0,0,0,0,0,0,0,0,0);
+        sleep(1000);
     }
 }
