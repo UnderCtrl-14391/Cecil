@@ -1,4 +1,16 @@
 package org.firstinspires.ftc.teamcode;
 
-public class Autop_Vermelho_medio {
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+@Autonomous
+public class Autop_Vermelho_medio extends AutoFunction {
+
+    @Override
+    public void runOpMode() {
+
+        HardwareMap(hardwareMap);
+
+        waitForStart();
+        autonomous(0,0,0,0,0,0,0,0,0);
+    }
 }
