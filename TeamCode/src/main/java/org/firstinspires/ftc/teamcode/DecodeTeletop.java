@@ -20,7 +20,7 @@ public class DecodeTeletop extends LinearOpMode{
     public DcMotor catapulta2;
     public DcMotor fat;
     public double INTAKE_IN_POWER = 1.0;
-    public double INTAKE_OUT_POWER = -0.7;
+    public float INTAKE_OUT_POWER = (float) (float) -0.7;
     public double INTAKE_OFF_POWER = 0.0;
     public double FAT_UP_POWER = 0.8;
     public double FAT_DOWN_POWER = -0.7;
@@ -86,7 +86,7 @@ public class DecodeTeletop extends LinearOpMode{
             boolean intakeInButton = gamepad2.left_stick_y > 0.2;
             float intakeOutButton = gamepad2.left_stick_x;
 
-            if (intakeInButton && intakeOutButton) {
+            if (intakeInButton & intakeOutButton) {
                 intakeInButton = false;
             }
 
@@ -96,11 +96,19 @@ public class DecodeTeletop extends LinearOpMode{
                 fatOutButton = false;
 
                 boolean catapultUpButton;
+                if (gamepad2.x){
+                      
+                }
+
                 if (gamepad2.x) catapultUpButton = true;
                 else catapultUpButton = false;
                 boolean catapultDownButton;
                 if (gamepad2.x = 0.2) catapultDownButton = true;
                 else catapultDownButton = false;
+
+
+
+
                 Object pivotMode = null;
                 FatModes fatmode = null;
                 if (catapultUpButton && catapultDownButton) {
