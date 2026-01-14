@@ -52,6 +52,7 @@ public class DecodeTeletop extends LinearOpMode {
         rightT.setDirection(DcMotor.Direction.REVERSE);
         left.setDirection(DcMotor.Direction.REVERSE);
         leftT.setDirection(DcMotor.Direction.FORWARD);
+        
         intake.setDirection(DcMotor.Direction.FORWARD);
         intake2.setDirection(DcMotor.Direction.REVERSE);
         catapulta1.setDirection(DcMotor.Direction.REVERSE);
@@ -73,9 +74,9 @@ public class DecodeTeletop extends LinearOpMode {
 
         while (opModeIsActive()) {
             // DRIVE LOGIC (Gamepad 1)
-            double axial = -gamepad1.left_stick_y;
-            double lateral = -gamepad1.right_stick_x;
-            double yaw = -gamepad1.left_stick_x;
+            double axial = -gamepad1.left_stick_y;//frente
+            double lateral = -gamepad1.left_stick_x;//streif
+            double yaw = -gamepad1.right_stick_x; // giro
 
             double leftPower = axial + lateral + yaw;
             double rightPower = axial - lateral - yaw;
