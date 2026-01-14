@@ -2,11 +2,15 @@ package org.firstinspires.ftc.teamcode;
 
 import com.pedropathing.follower.Follower;
 import com.pedropathing.geometry.BezierLine;
+import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
-import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.pedropathing.geometry.Pose;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.pedropathing.util.Timer;
+
+import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
+import org.firstinspires.ftc.teamcode.pedroPathing.PedroPathingAutoModel;
 
 
 @Autonomous
@@ -76,15 +80,35 @@ public class Autop_Vermelho_medio extends OpMode {
         }
     }
 
+    public void setPathState(Autop_Vermelho_medio.PathState newState) {
+        pathState = newState;
+        pathTimer.resetTimer();
+    }
+
 
 
     @Override
     public void init() {
+        pathState = PathState.SCORE_POSITION;
+        pathTimer = new Timer();
+        opModeTimer = new Timer();
+        follower = Constants.createFollower(hardwareMap);
+        //TODO add any other mechanisms that need to be initialized
 
+        buildPaths();
+        follower.setPose(startPose);
     }
 
     @Override
     public void loop() {
+        follower.update();
+        statePathUpdate();
+
+        telemetry.addData("Path State", pathState.toString());
+        telemetry.addData("x", follower.getPose().getX());
+        telemetry.addData("y", follower.getPose().getY());
+        telemetry.addData("heading", follower.getPose().getHeading());
+        telemetry.addData("path time", pathTimer.getElapsedTimeSeconds());
 
     }
 }
