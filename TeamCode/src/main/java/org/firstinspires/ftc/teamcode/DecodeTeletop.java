@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp
@@ -11,13 +13,14 @@ public class DecodeTeletop extends LinearOpMode {
     private final ElapsedTime runtime = new ElapsedTime();
 
     public DcMotor left;
-    public DcMotor leftTarget;
+    public DcMotor leftT;
     public DcMotor right;
-    public DcMotor rightTarget;
+    public DcMotor rightT;
     public DcMotor intake;
+    public DcMotor intake2;
     public DcMotor catapulta1;
     public DcMotor catapulta2;
-    public DcMotor fat;
+    public Servo fat;
 
     public double INTAKE_IN_POWER = 1.0;
     public double INTAKE_OUT_POWER = -0.7;
@@ -25,8 +28,8 @@ public class DecodeTeletop extends LinearOpMode {
     public double FAT_UP_POWER = 0.8;
     public double FAT_DOWN_POWER = -0.7;
     public double FAT_OFF_POWER = 0.0;
-    public double CATAPULTA_UP_POWER = 1.0;
-    public double CATAPULTA_DOWN_POWER = -0.8;
+    public double CATAPULTA_UP_POWER = -1.0;
+    public double CATAPULTA_DOWN_POWER = 0.8;
     public double CATAPULTA_HOLD_POWER = 0.3;
 
     private enum CatapultaModes {UP, DOWN, HOLD}
@@ -36,29 +39,31 @@ public class DecodeTeletop extends LinearOpMode {
     public void runOpMode() {
         // Initialize Hardware
         right = hardwareMap.get(DcMotor.class, "right");
-        rightTarget = hardwareMap.get(DcMotor.class, "rightTarget");
+        rightT = hardwareMap.get(DcMotor.class, "rightT");
         left = hardwareMap.get(DcMotor.class, "left");
-        leftTarget = hardwareMap.get(DcMotor.class, "leftTarget");
+        leftT = hardwareMap.get(DcMotor.class, "leftT");
         intake = hardwareMap.get(DcMotor.class, "intake");
+        intake2 = hardwareMap.get(DcMotor.class, "intake2");
         catapulta1 = hardwareMap.get(DcMotor.class, "catapulta1");
         catapulta2 = hardwareMap.get(DcMotor.class, "catapulta2");
-        fat = hardwareMap.get(DcMotor.class, "fat");
-
+        fat = hardwareMap.get(Servo.class , "fat");
         // Set Directions
         right.setDirection(DcMotor.Direction.FORWARD);
-        rightTarget.setDirection(DcMotor.Direction.REVERSE);
+        rightT.setDirection(DcMotor.Direction.REVERSE);
         left.setDirection(DcMotor.Direction.REVERSE);
-        leftTarget.setDirection(DcMotor.Direction.FORWARD);
+        leftT.setDirection(DcMotor.Direction.FORWARD);
         intake.setDirection(DcMotor.Direction.FORWARD);
+        intake2.setDirection(DcMotor.Direction.REVERSE);
         catapulta1.setDirection(DcMotor.Direction.REVERSE);
         catapulta2.setDirection(DcMotor.Direction.FORWARD);
-        fat.setDirection(DcMotor.Direction.REVERSE);
+
 
         // Set Zero Power Behavior
+        intake2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         catapulta1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         catapulta2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        fat.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -90,8 +95,8 @@ public class DecodeTeletop extends LinearOpMode {
 
             left.setPower(leftPower);
             right.setPower(rightPower);
-            leftTarget.setPower(leftTargetPower);
-            rightTarget.setPower(rightTargetPower);
+            leftT.setPower(leftTargetPower);
+            rightT.setPower(rightTargetPower);
 
             // MECHANISM LOGIC (Gamepad 2)
             
@@ -107,6 +112,7 @@ public class DecodeTeletop extends LinearOpMode {
                 intakePower = INTAKE_OFF_POWER;
             }
             intake.setPower(intakePower);
+            intake2.setPower(intakePower);
 
             // Fat (Linear Slide/Lifter)
             boolean fatUpButton = gamepad2.dpad_up;
@@ -123,7 +129,7 @@ public class DecodeTeletop extends LinearOpMode {
                 fatmode = FatModes.OFF;
                 fatPower = FAT_OFF_POWER;
             }
-            fat.setPower(fatPower);
+            fat.setPosition(fatPower);
 
             // Catapult
             boolean catapultUpButton = gamepad2.x;
