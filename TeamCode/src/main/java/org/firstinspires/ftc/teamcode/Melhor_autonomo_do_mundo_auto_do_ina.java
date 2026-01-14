@@ -11,7 +11,11 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 @Autonomous(name = "Melhor autonomo do mundo auto do ina", group = "Autonomous")
 public class Melhor_autonomo_do_mundo_auto_do_ina extends OpMode{
 
+        private Follower follower;
+        private Timer pathTimer;
+        private int pathState;
 
+        public class Paths {
         public PathChain pontodeinicio;
         public PathChain pegarasbolas;
         public PathChain pontoprairpraarremesar;
