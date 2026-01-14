@@ -2,18 +2,17 @@ package org.firstinspires.ftc.teamcode;
 
 import com.pedropathing.follower.Follower;
 import com.pedropathing.follower.FollowerConstants;
+import com.pedropathing.ftc.drivetrains.MecanumConstants;
+import com.pedropathing.ftc.localization.constants.DriveEncoderConstants;
 import com.pedropathing.geometry.BezierLine;
 import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.pedropathing.util.Timer;
-//import // org.firstinspires.ftc.teamcode.pedroPathing.Constants.FConstants;
-//import org.firstinspires.ftc.teamcode.pedroPathing.Constants.LConstants;
-import com.qualcomm.robotcore.hardware.configuration.LynxConstants;
 
-import org.firstinspires.ftc.robotcore.internal.ftdi.FtConstants;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
+
 
 @Autonomous(name = "Autop Vermelho Medio", group = "Autonomous")
 public class Autop_Vermelho_medio extends OpMode {
@@ -79,9 +78,7 @@ public class Autop_Vermelho_medio extends OpMode {
         opModeTimer = new Timer();
 
         // Inicializa o seguidor com as constantes do seu projeto
-        //follower = new Follower(hardwareMap, FConstants.class, LConstants.class);
-        follower.setStartingPose(startPose);
-
+        follower = Constants.createFollower(hardwareMap);
         buildPaths();
     }
 
