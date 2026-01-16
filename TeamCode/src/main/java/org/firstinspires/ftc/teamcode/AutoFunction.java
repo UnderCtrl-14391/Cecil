@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @Autonomous
 public class AutoFunction extends LinearOpMode {
@@ -12,6 +13,7 @@ public class AutoFunction extends LinearOpMode {
     public DcMotor leftT;
     public DcMotor rightT;
     public DcMotor intake;
+    public DcMotor intake2;
     public DcMotor catapulta1;
     public DcMotor catapulta2;
     public DcMotor fat;
@@ -22,9 +24,11 @@ public class AutoFunction extends LinearOpMode {
         leftT = hardwareMap.get(DcMotor.class, "leftT");
         rightT = hardwareMap.get(DcMotor.class, "rightT");
         intake = hardwareMap.get(DcMotor.class, "intake");
+        intake2 = hardwareMap.get(DcMotor.class, "intake2");
         catapulta1 = hardwareMap.get(DcMotor.class, "catapulta1");
         catapulta2 = hardwareMap.get(DcMotor.class, "catapulta2");
         fat = hardwareMap.get(DcMotor.class, "fat");
+
     }
 
     public void autonomous (int rightFront , int leftFront , int rightTarget , int leftTarget , double rightPower , double leftPower , double intakeP , int catapulta , double catapultaPower) {
@@ -45,7 +49,14 @@ public class AutoFunction extends LinearOpMode {
         leftT.setPower(leftPower);
         
         //mecanismos
+        intake.setDirection(DcMotor.Direction.REVERSE);
+        intake2.setDirection(DcMotor.Direction.FORWARD);
+        catapulta1.setDirection(DcMotor.Direction.REVERSE);
+        catapulta2.setDirection(DcMotor.Direction.FORWARD);
+
         intake.setPower(intakeP);
+        intake2.setPower(intakeP);
+
         catapulta1.setTargetPosition(catapulta);
         catapulta2.setTargetPosition(catapulta);
         catapulta1.setPower(catapultaPower);
