@@ -21,7 +21,6 @@ public class DecodeTeletop extends LinearOpMode {
     public DcMotor catapulta1;
     public DcMotor catapulta2;
     public Servo fat;
-
     public double INTAKE_IN_POWER = 1.0;
     public double INTAKE_OUT_POWER = -0.7;
     public double INTAKE_OFF_POWER = 0.0;
@@ -30,7 +29,7 @@ public class DecodeTeletop extends LinearOpMode {
     public double FAT_OFF_POWER = 0.0;
     public double CATAPULTA_UP_POWER = -1.0;
     public double CATAPULTA_DOWN_POWER = 0.8;
-    public double CATAPULTA_HOLD_POWER = 0.3;
+    public double CATAPULTA_HOLD_POWER = 0;
 
     private enum CatapultaModes {UP, DOWN, HOLD}
     private enum FatModes {UP, DOWN, OFF}
@@ -48,13 +47,10 @@ public class DecodeTeletop extends LinearOpMode {
         catapulta2 = hardwareMap.get(DcMotor.class, "catapulta2");
         fat = hardwareMap.get(Servo.class , "fat");
         // Set Directions
-        right.setDirection(DcMotor.Direction.FORWARD);
-        rightT.setDirection(DcMotor.Direction.REVERSE);
-        left.setDirection(DcMotor.Direction.REVERSE);
-        leftT.setDirection(DcMotor.Direction.FORWARD);
-        
-        intake.setDirection(DcMotor.Direction.FORWARD);
-        intake2.setDirection(DcMotor.Direction.REVERSE);
+
+
+        intake.setDirection(DcMotor.Direction.REVERSE);
+        intake2.setDirection(DcMotor.Direction.FORWARD);
         catapulta1.setDirection(DcMotor.Direction.REVERSE);
         catapulta2.setDirection(DcMotor.Direction.FORWARD);
 
@@ -74,9 +70,9 @@ public class DecodeTeletop extends LinearOpMode {
 
         while (opModeIsActive()) {
             // DRIVE LOGIC (Gamepad 1)
-            double axial = -gamepad1.left_stick_y;//frente
+            double axial = -gamepad1.right_stick_x;//giro
             double lateral = -gamepad1.left_stick_x;//streif
-            double yaw = -gamepad1.right_stick_x; // giro
+            double yaw = -gamepad1.left_stick_y; // frente
 
             double leftPower = axial + lateral + yaw;
             double rightPower = axial - lateral - yaw;
@@ -103,7 +99,7 @@ public class DecodeTeletop extends LinearOpMode {
             
             // Intake
             boolean intakeInButton = gamepad2.left_stick_y > 0.2;
-            boolean intakeOutButton = gamepad2.left_stick_x > 0.2;
+            boolean intakeOutButton = gamepad2.left_stick_y > 0.2;
             double intakePower;
             if (intakeInButton) {
                 intakePower = INTAKE_IN_POWER;
@@ -137,13 +133,13 @@ public class DecodeTeletop extends LinearOpMode {
             boolean catapultDownButton = gamepad2.x;
             CatapultaModes pivotMode;
             if (catapultUpButton) {
-                pivotMode = CatapultaModes.UP;
-                catapulta1.setPower(CATAPULTA_UP_POWER);
-                catapulta2.setPower(CATAPULTA_UP_POWER);
-            } else if (catapultDownButton) {
                 pivotMode = CatapultaModes.DOWN;
                 catapulta1.setPower(CATAPULTA_DOWN_POWER);
                 catapulta2.setPower(CATAPULTA_DOWN_POWER);
+            } else if (catapultDownButton) {
+                pivotMode = CatapultaModes.UP;
+                catapulta1.setPower(CATAPULTA_UP_POWER);
+                catapulta2.setPower(CATAPULTA_UP_POWER);
             } else {
                 pivotMode = CatapultaModes.HOLD;
                 catapulta1.setPower(CATAPULTA_HOLD_POWER);
