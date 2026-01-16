@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous
 public class AutoFunction extends LinearOpMode {
@@ -16,7 +17,7 @@ public class AutoFunction extends LinearOpMode {
     public DcMotor intake2;
     public DcMotor catapulta1;
     public DcMotor catapulta2;
-    public DcMotor fat;
+    public Servo fat;
 
     public void HardwareMap(com.qualcomm.robotcore.hardware.HardwareMap hardwareMap) {
         left = hardwareMap.get(DcMotor.class, "left");
@@ -27,7 +28,7 @@ public class AutoFunction extends LinearOpMode {
         intake2 = hardwareMap.get(DcMotor.class, "intake2");
         catapulta1 = hardwareMap.get(DcMotor.class, "catapulta1");
         catapulta2 = hardwareMap.get(DcMotor.class, "catapulta2");
-        fat = hardwareMap.get(DcMotor.class, "fat");
+        fat = hardwareMap.get(Servo.class , "fat");
 
     }
 
