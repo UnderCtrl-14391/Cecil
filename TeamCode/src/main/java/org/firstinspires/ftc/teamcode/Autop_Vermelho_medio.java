@@ -11,7 +11,7 @@ import com.pedropathing.util.Timer;
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 
 
-@Autonomous(name = "Autop Vermelho Medio", group = "Autonomous")
+@Autonomous
 public class Autop_Vermelho_medio extends OpMode {
 
     private Follower follower;

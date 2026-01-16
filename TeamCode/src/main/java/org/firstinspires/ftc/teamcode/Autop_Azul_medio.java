@@ -19,7 +19,9 @@ public class Autop_Azul_medio extends OpMode {
     private Paths paths;
 
     // Posição inicial do robô
-    private final Pose startPose = new Pose(127.243, 119.710, Math.toRadians(37));
+    private final Pose startPose = new Pose(16.756539235412475, 119.7102615694165, Math.toRadians(37));
+
+
 
     public static class Paths {
         public PathChain SCOREPOINT;
@@ -37,130 +39,116 @@ public class Autop_Azul_medio extends OpMode {
         public Paths(Follower follower) {
             SCOREPOINT = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(127.243, 119.710),
-                                    new Pose(127.243, 119.710)
+                                    new Pose(16.757, 119.710),
+
+                                    new Pose(16.757, 119.710)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(37), Math.toRadians(37))
+                    ).setLinearHeadingInterpolation(Math.toRadians(143), Math.toRadians(143))
+
                     .build();
 
             LOADPOS = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(127.243, 119.710),
-                                    new Pose(91.135, 81.817)
+                                    new Pose(16.757, 119.710),
+
+                                    new Pose(52.865, 81.817)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(37), Math.toRadians(0))
+                    ).setLinearHeadingInterpolation(Math.toRadians(143), Math.toRadians(180))
+
                     .build();
 
             LOADING = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(91.135, 81.817),
-                                    new Pose(124.634, 82.865)
+                                    new Pose(52.865, 81.817),
+
+                                    new Pose(19.366, 82.865)
                             )
-                    ).setTangentHeadingInterpolation()
+                    ).setLinearHeadingInterpolation(Math.toRadians(180), Math.toRadians(180))
+                    .setReversed(true)
                     .build();
 
             SCOREPOS = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(124.634, 82.865),
-                                    new Pose(127.243, 119.710)
+                                    new Pose(19.366, 82.865),
+
+                                    new Pose(16.757, 119.710)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(0), Math.toRadians(37))
+                    ).setLinearHeadingInterpolation(Math.toRadians(180), Math.toRadians(143))
+
                     .build();
 
             LOADPOS2 = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(127.243, 119.710),
-                                    new Pose(96.416, 59.841)
+                                    new Pose(16.757, 119.710),
+
+                                    new Pose(47.584, 59.841)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(37), Math.toRadians(0))
+                    ).setLinearHeadingInterpolation(Math.toRadians(143), Math.toRadians(180))
+
                     .build();
 
             LOADING2 = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(96.416, 59.841),
-                                    new Pose(123.988, 59.791)
+                                    new Pose(47.584, 59.841),
+
+                                    new Pose(20.012, 59.791)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(0), Math.toRadians(0))
+                    ).setLinearHeadingInterpolation(Math.toRadians(180), Math.toRadians(180))
+
                     .build();
 
             SCOREPOS2 = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(123.988, 59.791),
-                                    new Pose(127.243, 119.710)
+                                    new Pose(20.012, 59.791),
+
+                                    new Pose(16.757, 119.710)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(0), Math.toRadians(37))
+                    ).setLinearHeadingInterpolation(Math.toRadians(180), Math.toRadians(143))
+
                     .build();
 
             LOADPOS3 = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(127.243, 119.710),
-                                    new Pose(96.795, 33.765)
+                                    new Pose(16.757, 119.710),
+
+                                    new Pose(47.205, 33.765)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(37), Math.toRadians(0))
+                    ).setLinearHeadingInterpolation(Math.toRadians(143), Math.toRadians(180))
+
                     .build();
 
             LOADING3 = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(96.795, 33.765),
-                                    new Pose(124.312, 34.968)
+                                    new Pose(47.205, 33.765),
+
+                                    new Pose(19.688, 34.968)
                             )
-                    ).setTangentHeadingInterpolation()
+                    ).setLinearHeadingInterpolation(Math.toRadians(180), Math.toRadians(180))
+                    .setReversed(true)
                     .build();
 
             SCOREPOS3 = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(124.312, 34.968),
-                                    new Pose(127.243, 119.710)
+                                    new Pose(19.688, 34.968),
+
+                                    new Pose(21.682, 126.954)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(0), Math.toRadians(37))
+                    ).setLinearHeadingInterpolation(Math.toRadians(180), Math.toRadians(143))
+
                     .build();
 
             IMURESET = follower.pathBuilder().addPath(
                             new BezierLine(
-                                    new Pose(127.243, 119.710),
-                                    new Pose(125.686, 99.028)
+                                    new Pose(21.682, 126.954),
+
+                                    new Pose(18.314, 99.028)
                             )
-                    ).setLinearHeadingInterpolation(Math.toRadians(37), Math.toRadians(0))
+                    ).setLinearHeadingInterpolation(Math.toRadians(143), Math.toRadians(180))
+
                     .build();
         }
     }
 
-    public void setPathState(int state) {
-        pathState = state;
-        pathTimer.resetTimer();
-    }
-
-    public void autonomousPathUpdate() {
-        switch (pathState) {
-            case 0:
-                follower.followPath(paths.SCOREPOINT);
-                setPathState(1);
-                break;
-            case 1:
-                if (!follower.isBusy()) {
-                    follower.followPath(paths.LOADPOS);
-                    setPathState(2);
-                }
-                break;
-            case 2:
-                if (!follower.isBusy()) {
-                    follower.followPath(paths.LOADING);
-                    setPathState(3);
-                }
-                break;
-            case 3:
-                if (!follower.isBusy()) {
-                    follower.followPath(paths.SCOREPOS);
-                    setPathState(4);
-                }
-                break;
-            case 4:
-                if (!follower.isBusy()) {
-                    setPathState(-1);
-                }
-                break;
-        }
-    }
 
     @Override
     public void init() {
