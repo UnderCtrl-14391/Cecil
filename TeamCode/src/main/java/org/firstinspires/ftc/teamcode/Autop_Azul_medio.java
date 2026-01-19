@@ -64,7 +64,7 @@ public class Autop_Azul_medio extends OpMode {
                                     new Pose(19.366, 82.865)
                             )
                     ).setLinearHeadingInterpolation(Math.toRadians(180), Math.toRadians(180))
-                    .setReversed(true)
+                    //.setReversed(true)
                     .build();
 
             SCOREPOS = follower.pathBuilder().addPath(
@@ -124,7 +124,7 @@ public class Autop_Azul_medio extends OpMode {
                                     new Pose(19.688, 34.968)
                             )
                     ).setLinearHeadingInterpolation(Math.toRadians(180), Math.toRadians(180))
-                    .setReversed(true)
+                    //.setReversed(true)
                     .build();
 
             SCOREPOS3 = follower.pathBuilder().addPath(
@@ -164,13 +164,13 @@ public class Autop_Azul_medio extends OpMode {
     @Override
     public void start() {
         opModeTimer.resetTimer();
-        setPathState(0);
+        //setPathState(0);
     }
 
     @Override
     public void loop() {
         follower.update();
-        autonomousPathUpdate();
+        //autonomousPathUpdate();
 
         telemetry.addData("Path State", pathState);
         telemetry.addData("x", follower.getPose().getX());
