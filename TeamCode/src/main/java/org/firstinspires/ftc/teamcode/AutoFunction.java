@@ -9,15 +9,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 @Autonomous
 public class AutoFunction extends LinearOpMode {
 
-    public DcMotor left;
-    public DcMotor right;
-    public DcMotor leftT;
-    public DcMotor rightT;
-    public DcMotor intake;
-    public DcMotor intake2;
-    public DcMotor catapulta1;
-    public DcMotor catapulta2;
-    public Servo fat;
+    public DcMotor left, right, leftT, rightT, intake, intake2, catapulta1, catapulta2;
 
     public void HardwareMap(com.qualcomm.robotcore.hardware.HardwareMap hardwareMap) {
         left = hardwareMap.get(DcMotor.class, "left");
@@ -28,48 +20,78 @@ public class AutoFunction extends LinearOpMode {
         intake2 = hardwareMap.get(DcMotor.class, "intake2");
         catapulta1 = hardwareMap.get(DcMotor.class, "catapulta1");
         catapulta2 = hardwareMap.get(DcMotor.class, "catapulta2");
-        fat = hardwareMap.get(Servo.class , "fat");
 
+        // REVERSE left motors so the robot moves forward correctly
+        left.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftT.setDirection(DcMotorSimple.Direction.REVERSE);
+        right.setDirection(DcMotorSimple.Direction.FORWARD);
+        rightT.setDirection(DcMotorSimple.Direction.FORWARD);
+        intake.setDirection(DcMotor.Direction.REVERSE);
+        intake2.setDirection(DcMotor.Direction.FORWARD);
+        
+        // Ensure mechanisms stop when power is 0
+        left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        right.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftT.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightT.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        catapulta1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        catapulta2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
-    public void autonomous (int rightFront , int leftFront , int rightTarget , int leftTarget , double rightPower , double leftPower , double intakeP , int catapulta , double catapultaPower) {
-        //tração
+    public void autonomous(int rightFront, int leftFront, int rightTarget, int leftTarget, double rightPower, double leftPower, double intakeP, int catapultaPos, double catapultaPower) {
+        // Reset Encoders
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        
+
+        // Set Targets
         right.setTargetPosition(rightFront);
         left.setTargetPosition(leftFront);
         rightT.setTargetPosition(rightTarget);
         leftT.setTargetPosition(leftTarget);
-        
+        catapulta1.setTargetPosition(catapultaPos);
+        catapulta2.setTargetPosition(catapultaPos);
+
+        // Set to RUN_TO_POSITION
+        right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightT.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftT.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        catapulta1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        catapulta2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        // Set Powers
         right.setPower(rightPower);
         rightT.setPower(rightPower);
         left.setPower(leftPower);
         leftT.setPower(leftPower);
         
-        //mecanismos
-        intake.setDirection(DcMotor.Direction.REVERSE);
-        intake2.setDirection(DcMotor.Direction.FORWARD);
-        catapulta1.setDirection(DcMotor.Direction.REVERSE);
-        catapulta2.setDirection(DcMotor.Direction.FORWARD);
-
         intake.setPower(intakeP);
         intake2.setPower(intakeP);
-
-        catapulta1.setTargetPosition(catapulta);
-        catapulta2.setTargetPosition(catapulta);
+        
         catapulta1.setPower(catapultaPower);
         catapulta2.setPower(catapultaPower);
+
+        while (opModeIsActive() &&
+                (right.isBusy() ||
+                        rightT.isBusy() ||
+                        left.isBusy() ||
+                        leftT.isBusy() ||
+                        catapulta1.isBusy() ||
+                        catapulta2.isBusy())){
+            idle();
+
+        }
+
     }
 
     @Override
     public void runOpMode() {
         HardwareMap(hardwareMap);
-
         waitForStart();
-        // Call the method directly without creating a new instance
-        autonomous(0 , 0 , 0, 0, 0, 0, 0, 0, 0);
+        
+        // Example: Move forward 1000 ticks with 50% power
+        autonomous(1000, 1000, 1000, 1000, 0.5, 0.5, 0, 0, 0);
     }
 }

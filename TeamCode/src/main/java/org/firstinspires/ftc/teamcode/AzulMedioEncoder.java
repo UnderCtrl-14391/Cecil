@@ -10,7 +10,7 @@ public class AzulMedioEncoder extends AutoFunction {
         HardwareMap(hardwareMap);
 
         waitForStart();
-        while (opModeIsActive()) {
+        if (opModeIsActive()) {
 
                 autonomous(0, 0, 0, 0, 0, 0, 0, 0, 0);
                 sleep(1000);
