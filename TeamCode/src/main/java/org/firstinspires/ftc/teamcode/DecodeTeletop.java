@@ -29,9 +29,10 @@ public class DecodeTeletop extends LinearOpMode {
     public double FAT_OFF_POWER = 0.0;
     public double CATAPULTA_UP_POWER = -1.0;
     public double CATAPULTA_DOWN_POWER = 1.0;
-    public double CATAPULTA_HOLD_POWER = 0.0;
+    public double CATAPULTA_HOLD_POWER = 0.2;
 
     private enum CatapultaModes {UP, DOWN, HOLD}
+    private  CatapultaModes pivotMode;
     private enum FatModes {UP, DOWN, OFF}
 
     @Override
@@ -129,6 +130,25 @@ public class DecodeTeletop extends LinearOpMode {
 
             // Catapult
             boolean catapultUpButton = gamepad2.x;
+            boolean catapultDownButton = gamepad2.y;
+            if(catapultUpButton && catapultDownButton){
+                catapulta1.setPower(CATAPULTA_HOLD_POWER);
+                catapulta2.setPower(CATAPULTA_HOLD_POWER);
+            }
+            else if (catapultUpButton) {
+                catapulta1.setPower(CATAPULTA_UP_POWER);
+                catapulta2.setPower(CATAPULTA_UP_POWER);
+            } else if (catapultDownButton) {
+                catapulta1.setPower(CATAPULTA_DOWN_POWER);
+                catapulta2.setPower(CATAPULTA_DOWN_POWER);
+            }
+            else {
+                catapulta1.setPower(CATAPULTA_HOLD_POWER);
+                catapulta2.setPower(CATAPULTA_HOLD_POWER);
+            }
+
+
+           /* boolean catapultUpButton = gamepad2.x;
             CatapultaModes pivotMode;{
             }  if (catapultUpButton) {
                 pivotMode = CatapultaModes.UP;
@@ -139,7 +159,7 @@ public class DecodeTeletop extends LinearOpMode {
                 catapulta1.setPower(CATAPULTA_HOLD_POWER);
                 catapulta2.setPower(CATAPULTA_HOLD_POWER);
             }
-
+/
             boolean catapultDownButton = gamepad2.y; {
                 if (catapultDownButton) {
                     pivotMode = CatapultaModes.DOWN;
@@ -149,7 +169,8 @@ public class DecodeTeletop extends LinearOpMode {
                         pivotMode = CatapultaModes.HOLD;
                         catapulta1.setPower(CATAPULTA_HOLD_POWER);
                         catapulta2.setPower(CATAPULTA_HOLD_POWER);
-            }
+            }*/
+
 
             // Telemetry
             telemetry.addData("Status", "Run Time: " + runtime.toString());
@@ -161,4 +182,4 @@ public class DecodeTeletop extends LinearOpMode {
             telemetry.update();
         }
     }
-}}
+}
