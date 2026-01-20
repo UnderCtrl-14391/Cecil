@@ -98,22 +98,7 @@ public class DecodeTeletop extends LinearOpMode {
             leftT.setPower(leftTargetPower);
             rightT.setPower(rightTargetPower);
 
-            public void init(HardwareMap hardwareMap){
-                imu = hardwareMap.get(IMU.class, "imu");
-
-                RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
-                        RevHubOrientationOnRobot RevOrientation.LogoFacingDirection.UP,
-                        RevHubOrientationOnRobot.UsbFacingDirection.FORWARD
-
-                );
-                imu.initialize(new IMU.Parameters(RevOrientation));
-            }
-
-            public double getHeading Object AngleUnit;
-            AngleUnit) {
-                return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit);
-            }
-
+           
             // MECHANISM LOGIC (Gamepad 2)
              
             // Intake
