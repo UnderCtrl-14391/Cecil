@@ -1,9 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -29,8 +32,8 @@ public class DecodeTeletop extends LinearOpMode {
     public double FAT_OFF_POWER = 0.0;
     public double CATAPULTA_UP_POWER = -1.0;
     public double CATAPULTA_DOWN_POWER = 1.0;
-    public double CATAPULTA_HOLD_POWER = 0.2;
-
+    public double CATAPULTA_HOLD_POWER = 0.5;
+    public IMU imu;
     private enum CatapultaModes {UP, DOWN, HOLD}
     private  CatapultaModes pivotMode;
     private enum FatModes {UP, DOWN, OFF}
@@ -95,8 +98,24 @@ public class DecodeTeletop extends LinearOpMode {
             leftT.setPower(leftTargetPower);
             rightT.setPower(rightTargetPower);
 
+            public void init(HardwareMap hardwareMap){
+                imu = hardwareMap.get(IMU.class, "imu");
+
+                RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
+                        RevHubOrientationOnRobot RevOrientation.LogoFacingDirection.UP,
+                        RevHubOrientationOnRobot.UsbFacingDirection.FORWARD
+
+                );
+                imu.initialize(new IMU.Parameters(RevOrientation));
+            }
+
+            public double getHeading Object AngleUnit;
+            AngleUnit) {
+                return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit);
+            }
+
             // MECHANISM LOGIC (Gamepad 2)
-            
+             
             // Intake
             boolean intakeInButton = gamepad2.left_stick_y > 0.2;
             boolean intakeOutButton = gamepad2.left_stick_y > 0.2;
