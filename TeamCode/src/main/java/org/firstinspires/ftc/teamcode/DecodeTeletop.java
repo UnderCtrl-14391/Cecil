@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.ImuOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -19,6 +20,7 @@ public class DecodeTeletop extends LinearOpMode {
     public DcMotor leftT;
     public DcMotor right;
     public DcMotor rightT;
+    public IMU imu;
     public DcMotor intake;
     public DcMotor intake2;
     public DcMotor catapulta1;
@@ -32,8 +34,9 @@ public class DecodeTeletop extends LinearOpMode {
     public double FAT_OFF_POWER = 0.0;
     public double CATAPULTA_UP_POWER = -1.0;
     public double CATAPULTA_DOWN_POWER = 1.0;
-    public double CATAPULTA_HOLD_POWER = 0.5;
-    public IMU imu;
+    public double CATAPULTA_HOLD_POWER = -0;
+    private ImuOrientationOnRobot RevOrientation;
+
     private enum CatapultaModes {UP, DOWN, HOLD}
     private  CatapultaModes pivotMode;
     private enum FatModes {UP, DOWN, OFF}
@@ -45,6 +48,7 @@ public class DecodeTeletop extends LinearOpMode {
         rightT = hardwareMap.get(DcMotor.class, "rightT");
         left = hardwareMap.get(DcMotor.class, "left");
         leftT = hardwareMap.get(DcMotor.class, "leftT");
+        imu  = hardwareMap.get(IMU.class, "imu");
         intake = hardwareMap.get(DcMotor.class, "intake");
         intake2 = hardwareMap.get(DcMotor.class, "intake2");
         catapulta1 = hardwareMap.get(DcMotor.class, "catapulta1");
@@ -98,7 +102,23 @@ public class DecodeTeletop extends LinearOpMode {
             leftT.setPower(leftTargetPower);
             rightT.setPower(rightTargetPower);
 
-           
+
+            void init;
+            IMU revHubOrientationOnRobot;
+            for (IMU imu1 : new IMU[]{
+                    RevHubOrientationOnRobot revHubOrientationOnRobot(
+                    RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD
+                    RevHubOrientationOnRobot.UsbFacingDirection.UP
+            )
+                    imu.initialize(new IMU.Parameters(RevOrientation))
+
+            }) {
+                public double getHeading() {
+                    return imu.getRobotYawPitchRollAngles().getYaw()
+                }
+            }
+
+
             // MECHANISM LOGIC (Gamepad 2)
              
             // Intake
@@ -135,11 +155,9 @@ public class DecodeTeletop extends LinearOpMode {
             // Catapult
             boolean catapultUpButton = gamepad2.x;
             boolean catapultDownButton = gamepad2.y;
-            if(catapultUpButton && catapultDownButton){
-                catapulta1.setPower(CATAPULTA_HOLD_POWER);
-                catapulta2.setPower(CATAPULTA_HOLD_POWER);
-            }
-            else if (catapultUpButton) {
+            //if(catapultUpButton && catapultDownButton){
+
+             if (catapultUpButton) {
                 catapulta1.setPower(CATAPULTA_UP_POWER);
                 catapulta2.setPower(CATAPULTA_UP_POWER);
             } else if (catapultDownButton) {
