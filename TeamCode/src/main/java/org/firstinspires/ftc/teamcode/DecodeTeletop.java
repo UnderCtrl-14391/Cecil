@@ -11,6 +11,8 @@ import com.qualcomm.robotcore.hardware.ImuOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 @TeleOp
 public class DecodeTeletop extends LinearOpMode {
 
@@ -21,6 +23,10 @@ public class DecodeTeletop extends LinearOpMode {
     public DcMotor right;
     public DcMotor rightT;
     public IMU imu;
+    double setRight;
+    double setRightT;
+    double setLeft;
+    double setLeftT;
     public DcMotor intake;
     public DcMotor intake2;
     public DcMotor catapulta1;
@@ -36,6 +42,15 @@ public class DecodeTeletop extends LinearOpMode {
     public double CATAPULTA_DOWN_POWER = 1.0;
     public double CATAPULTA_HOLD_POWER = -0;
     private ImuOrientationOnRobot RevOrientation;
+
+    public double getHeading() {
+    }
+
+    public void setRight(double v) {
+    }
+
+    public void setLeft(double v) {
+    }
 
     private enum CatapultaModes {UP, DOWN, HOLD}
     private  CatapultaModes pivotMode;
@@ -103,21 +118,52 @@ public class DecodeTeletop extends LinearOpMode {
             rightT.setPower(rightTargetPower);
 
 
-            void init;
-            IMU revHubOrientationOnRobot;
-            for (IMU imu1 : new IMU[]{
-                    RevHubOrientationOnRobot revHubOrientationOnRobot(
-                    RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD
-                    RevHubOrientationOnRobot.UsbFacingDirection.UP
-            )
-                    imu.initialize(new IMU.Parameters(RevOrientation))
+            {
+                DcMotor rightT;
+                DcMotor leftT;
+                DcMotor right;
+                DcMotor left;
 
-            }) {
-                public double getHeading() {
+                void init;
+                IMU revHubOrientationOnRobot;
+                for (IMU imu : new IMU[]{
+                        RevHubOrientationOnRobot revHubOrientationOnRobot(
+                        RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD ;
+                RevHubOrientationOnRobot.UsbFacingDirection.UP;
+            )
+                imu.initialize(new IMU.Parameters(RevOrientation));
+                right = hardwareMap.get(DcMotor.class, "right");
+                rightT = hardwareMap.get(DcMotor.class, "rightT");
+                left = hardwareMap.get(DcMotor.class, "left");
+                leftT = hardwareMap.get(DcMotor.class, "leftT");        
+
+            }){
+                public double getHeading () {
                     return imu.getRobotYawPitchRollAngles().getYaw()
+                            
+                    rightT.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    leftT.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                    left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                }
+                {
+                public double getHeading(AngleUnit
+                    AngleUnit angleunit;
+                    angleunit) {
+                    return imu.getRobotYawPitchRollAngles().getYaw(angleunit);
+                }
+                
+                public void setMotors( double power){
+                    rightT.setPower(power);
+                    right.setPower(power);
+                    left.setPower(power);
+                    leftT.setPower(power);
+                            
+                }
+
                 }
             }
-
+            }
 
             // MECHANISM LOGIC (Gamepad 2)
              
