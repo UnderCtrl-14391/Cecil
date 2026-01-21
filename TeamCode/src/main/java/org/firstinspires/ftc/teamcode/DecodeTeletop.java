@@ -11,6 +11,8 @@ import com.qualcomm.robotcore.hardware.ImuOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 @TeleOp
 public class DecodeTeletop extends LinearOpMode {
 
@@ -103,20 +105,6 @@ public class DecodeTeletop extends LinearOpMode {
             rightT.setPower(rightTargetPower);
 
 
-            void init;
-            IMU revHubOrientationOnRobot;
-            for (IMU imu1 : new IMU[]{
-                    RevHubOrientationOnRobot revHubOrientationOnRobot(
-                    RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD
-                    RevHubOrientationOnRobot.UsbFacingDirection.UP
-            )
-                    imu.initialize(new IMU.Parameters(RevOrientation))
-
-            }) {
-                public double getHeading() {
-                    return imu.getRobotYawPitchRollAngles().getYaw()
-                }
-            }
 
 
             // MECHANISM LOGIC (Gamepad 2)
@@ -203,5 +191,9 @@ public class DecodeTeletop extends LinearOpMode {
             telemetry.addData("Catapult MODE", "%s", pivotMode);
             telemetry.update();
         }
+    }
+    // Method to get Heading (Outside of runOpMode)
+    public double getHeading() {
+        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
     }
 }
