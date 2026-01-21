@@ -44,6 +44,7 @@ public class DecodeTeletop extends LinearOpMode {
     private ImuOrientationOnRobot RevOrientation;
 
     public double getHeading() {
+        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
     }
 
     public void setRight(double v) {
@@ -53,7 +54,9 @@ public class DecodeTeletop extends LinearOpMode {
     }
 
     private enum CatapultaModes {UP, DOWN, HOLD}
-    private  CatapultaModes pivotMode;
+
+    private CatapultaModes pivotMode;
+
     private enum FatModes {UP, DOWN, OFF}
 
     @Override
@@ -63,13 +66,19 @@ public class DecodeTeletop extends LinearOpMode {
         rightT = hardwareMap.get(DcMotor.class, "rightT");
         left = hardwareMap.get(DcMotor.class, "left");
         leftT = hardwareMap.get(DcMotor.class, "leftT");
-        imu  = hardwareMap.get(IMU.class, "imu");
+        imu = hardwareMap.get(IMU.class, "imu");
         intake = hardwareMap.get(DcMotor.class, "intake");
         intake2 = hardwareMap.get(DcMotor.class, "intake2");
         catapulta1 = hardwareMap.get(DcMotor.class, "catapulta1");
         catapulta2 = hardwareMap.get(DcMotor.class, "catapulta2");
-        fat = hardwareMap.get(Servo.class , "fat");
+        fat = hardwareMap.get(Servo.class, "fat");
         // Set Directions
+
+        //NEW IMU INITIALIZATION
+        RevHubOrientationOnRobot orientation = new RevHubOrientationOnRobot(
+                RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD,
+                RevHubOrientationOnRobot.UsbFacingDirection.UP);
+        imu.initialize(new IMU.Parameters(orientation));
 
 
         intake.setDirection(DcMotor.Direction.REVERSE);
@@ -124,7 +133,7 @@ public class DecodeTeletop extends LinearOpMode {
                 DcMotor right;
                 DcMotor left;
 
-                void init;
+             /*   void init;
                 IMU revHubOrientationOnRobot;
                 for (IMU imu : new IMU[]{
                         RevHubOrientationOnRobot revHubOrientationOnRobot(
@@ -163,57 +172,56 @@ public class DecodeTeletop extends LinearOpMode {
 
                 }
             }
-            }
+            }*/
 
-            // MECHANISM LOGIC (Gamepad 2)
-             
-            // Intake
-            boolean intakeInButton = gamepad2.left_stick_y > 0.2;
-            boolean intakeOutButton = gamepad2.left_stick_y > 0.2;
-            double intakePower;
-            if (intakeInButton) {
-                intakePower = INTAKE_IN_POWER;
-            } else if (intakeOutButton) {
-                intakePower = INTAKE_OUT_POWER;
-            } else {
-                intakePower = INTAKE_OFF_POWER;
-            }
-            intake.setPower(intakePower);
-            intake2.setPower(intakePower);
+                // MECHANISM LOGIC (Gamepad 2)
 
-            // Fat (Linear Slide/Lifter)
-            boolean fatUpButton = gamepad2.dpad_up;
-            boolean fatDownButton = gamepad2.dpad_down;
-            FatModes fatmode;
-            double fatPower;
-            if (fatUpButton) {
-                fatmode = FatModes.UP;
-                fatPower = FAT_UP_POWER;
-            } else if (fatDownButton) {
-                fatmode = FatModes.DOWN;
-                fatPower = FAT_DOWN_POWER;
-            } else {
-                fatmode = FatModes.OFF;
-                fatPower = FAT_OFF_POWER;
-            }
-            fat.setPosition(fatPower);
+                // Intake
+                boolean intakeInButton = gamepad2.left_stick_y > 0.2;
+                boolean intakeOutButton = gamepad2.left_stick_y > 0.2;
+                double intakePower;
+                if (intakeInButton) {
+                    intakePower = INTAKE_IN_POWER;
+                } else if (intakeOutButton) {
+                    intakePower = INTAKE_OUT_POWER;
+                } else {
+                    intakePower = INTAKE_OFF_POWER;
+                }
+                intake.setPower(intakePower);
+                intake2.setPower(intakePower);
 
-            // Catapult
-            boolean catapultUpButton = gamepad2.x;
-            boolean catapultDownButton = gamepad2.y;
-            //if(catapultUpButton && catapultDownButton){
+                // Fat (Linear Slide/Lifter)
+                boolean fatUpButton = gamepad2.dpad_up;
+                boolean fatDownButton = gamepad2.dpad_down;
+                FatModes fatmode;
+                double fatPower;
+                if (fatUpButton) {
+                    fatmode = FatModes.UP;
+                    fatPower = FAT_UP_POWER;
+                } else if (fatDownButton) {
+                    fatmode = FatModes.DOWN;
+                    fatPower = FAT_DOWN_POWER;
+                } else {
+                    fatmode = FatModes.OFF;
+                    fatPower = FAT_OFF_POWER;
+                }
+                fat.setPosition(fatPower);
 
-             if (catapultUpButton) {
-                catapulta1.setPower(CATAPULTA_UP_POWER);
-                catapulta2.setPower(CATAPULTA_UP_POWER);
-            } else if (catapultDownButton) {
-                catapulta1.setPower(CATAPULTA_DOWN_POWER);
-                catapulta2.setPower(CATAPULTA_DOWN_POWER);
-            }
-            else {
-                catapulta1.setPower(CATAPULTA_HOLD_POWER);
-                catapulta2.setPower(CATAPULTA_HOLD_POWER);
-            }
+                // Catapult
+                boolean catapultUpButton = gamepad2.x;
+                boolean catapultDownButton = gamepad2.y;
+                //if(catapultUpButton && catapultDownButton){
+
+                if (catapultUpButton) {
+                    catapulta1.setPower(CATAPULTA_UP_POWER);
+                    catapulta2.setPower(CATAPULTA_UP_POWER);
+                } else if (catapultDownButton) {
+                    catapulta1.setPower(CATAPULTA_DOWN_POWER);
+                    catapulta2.setPower(CATAPULTA_DOWN_POWER);
+                } else {
+                    catapulta1.setPower(CATAPULTA_HOLD_POWER);
+                    catapulta2.setPower(CATAPULTA_HOLD_POWER);
+                }
 
 
            /* boolean catapultUpButton = gamepad2.x;
@@ -240,14 +248,15 @@ public class DecodeTeletop extends LinearOpMode {
             }*/
 
 
-            // Telemetry
-            telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Drive Powers", "FL:%.2f, FR:%.2f, BL:%.2f, BR:%.2f", 
-                leftPower, rightPower, leftTargetPower, rightTargetPower);
-            telemetry.addData("Intake Power", "%.2f", intake.getPower());
-            telemetry.addData("Foot MODE", "%s", fatmode);
-            telemetry.addData("Catapult MODE", "%s", pivotMode);
-            telemetry.update();
+                // Telemetry
+                telemetry.addData("Status", "Run Time: " + runtime.toString());
+                telemetry.addData("Drive Powers", "FL:%.2f, FR:%.2f, BL:%.2f, BR:%.2f",
+                        leftPower, rightPower, leftTargetPower, rightTargetPower);
+                telemetry.addData("Intake Power", "%.2f", intake.getPower());
+                telemetry.addData("Foot MODE", "%s", fatmode);
+                telemetry.addData("Catapult MODE", "%s", pivotMode);
+                telemetry.update();
+            }
         }
     }
 }
