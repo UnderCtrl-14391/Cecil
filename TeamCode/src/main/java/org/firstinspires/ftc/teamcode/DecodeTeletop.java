@@ -4,94 +4,75 @@ import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
-import com.qualcomm.robotcore.hardware.ImuOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
-@TeleOp
+@TeleOp(name="Decoded TeleOp Fixed")
 public class DecodeTeletop extends LinearOpMode {
+    // Hardware Members
+    private DcMotor frontLeftMotor, BackLeftMotor, frontRightMotor, BackRightMotor;
+    private DcMotor intake, intake2, catapulta1, catapulta2;
+    private Servo fat;
+    private IMU imu;
 
     private final ElapsedTime runtime = new ElapsedTime();
 
-    public DcMotor left;
-    public DcMotor leftT;
-    public DcMotor right;
-    public DcMotor rightT;
-    public IMU imu;
-    double setRight;
-    double setRightT;
-    double setLeft;
-    double setLeftT;
-    public DcMotor intake;
-    public DcMotor intake2;
-    public DcMotor catapulta1;
-    public DcMotor catapulta2;
-    public Servo fat;
+    // Constants
     public double INTAKE_IN_POWER = 1.0;
     public double INTAKE_OUT_POWER = -0.7;
     public double INTAKE_OFF_POWER = 0.0;
-    public double FAT_UP_POWER = 0.8;
-    public double FAT_DOWN_POWER = -0.7;
-    public double FAT_OFF_POWER = 0.0;
-    public double CATAPULTA_UP_POWER = -1.0;
-    public double CATAPULTA_DOWN_POWER = 1.0;
-    public double CATAPULTA_HOLD_POWER = -0;
-    private ImuOrientationOnRobot RevOrientation;
 
-    public double getHeading() {
-        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
-    }
+    // Servo Positions (Adjust these values for your specific servo limits)
+    public double FAT_UP_POS = 1.0;
+    public double FAT_DOWN_POS = 0.0;
 
-    public void setRight(double v) {
-    }
+    public double CATAPULTA_UP_POWER = 1.0;
+    public double CATAPULTA_DOWN_POWER = -1.0;
+    public double CATAPULTA_HOLD_POWER = -0.15; // Small power to resist gravity
 
-    public void setLeft(double v) {
-    }
-
+    // State tracking
     private enum CatapultaModes {UP, DOWN, HOLD}
-
-    private CatapultaModes pivotMode;
-
     private enum FatModes {UP, DOWN, OFF}
+    private CatapultaModes pivotMode = CatapultaModes.HOLD;
+    private FatModes fatmode = FatModes.OFF;
 
     @Override
     public void runOpMode() {
-        // Initialize Hardware
-        right = hardwareMap.get(DcMotor.class, "right");
-        rightT = hardwareMap.get(DcMotor.class, "rightT");
-        left = hardwareMap.get(DcMotor.class, "left");
-        leftT = hardwareMap.get(DcMotor.class, "leftT");
-        imu = hardwareMap.get(IMU.class, "imu");
+        // 1. HARDWARE MAPPING
+        frontLeftMotor = hardwareMap.get(DcMotor.class, "leftT");
+        BackLeftMotor =  hardwareMap.get(DcMotor.class, "left");
+        frontRightMotor = hardwareMap.get(DcMotor.class, "rightT"); // Fixed mapping
+        BackRightMotor = hardwareMap.get(DcMotor.class, "right");
+
         intake = hardwareMap.get(DcMotor.class, "intake");
         intake2 = hardwareMap.get(DcMotor.class, "intake2");
         catapulta1 = hardwareMap.get(DcMotor.class, "catapulta1");
         catapulta2 = hardwareMap.get(DcMotor.class, "catapulta2");
         fat = hardwareMap.get(Servo.class, "fat");
-        // Set Directions
 
-        //NEW IMU INITIALIZATION
-        RevHubOrientationOnRobot orientation = new RevHubOrientationOnRobot(
-                RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD,
-                RevHubOrientationOnRobot.UsbFacingDirection.UP);
-        imu.initialize(new IMU.Parameters(orientation));
-
+        // 2. MOTOR DIRECTIONS
+        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        BackLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        BackRightMotor.setDirection(DcMotor.Direction.FORWARD);
 
         intake.setDirection(DcMotor.Direction.REVERSE);
         intake2.setDirection(DcMotor.Direction.FORWARD);
         catapulta1.setDirection(DcMotor.Direction.REVERSE);
         catapulta2.setDirection(DcMotor.Direction.FORWARD);
 
-
-        // Set Zero Power Behavior
-        intake2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        // 3. BRAKE BEHAVIOR
         catapulta1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         catapulta2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        // 4. IMU INITIALIZATION (Do this once, NOT in the loop)
+        imu = hardwareMap.get(IMU.class, "imu");
+        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD;
+        RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.UP;
+        RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
+        imu.initialize(new IMU.Parameters(orientationOnRobot));
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -101,162 +82,90 @@ public class DecodeTeletop extends LinearOpMode {
 
         while (opModeIsActive()) {
             // DRIVE LOGIC (Gamepad 1)
-            double axial = -gamepad1.right_stick_x;//giro
-            double lateral = -gamepad1.left_stick_x;//streif
-            double yaw = -gamepad1.left_stick_y; // frente
+            double forward = gamepad1.left_stick_y; // Reversed because Y is negative up
+            double strafe = -gamepad1.left_stick_x;
+            double rotate = gamepad1.right_stick_x;
 
-            double leftPower = axial + lateral + yaw;
-            double rightPower = axial - lateral - yaw;
-            double leftTargetPower = axial - lateral + yaw;
-            double rightTargetPower = axial + lateral - yaw;
+            // Choose one: drive() for robot-centric or driveFieldRelative() for field-centric
+            driveFieldRelative(forward, strafe, rotate);
 
-            double max = Math.max(Math.abs(leftPower), Math.abs(rightPower));
-            max = Math.max(max, Math.abs(leftTargetPower));
-            max = Math.max(max, Math.abs(rightTargetPower));
+            // MECHANISM LOGIC (Gamepad 2)
 
-            if (max > 1.0) {
-                leftPower /= max;
-                rightPower /= max;
-                leftTargetPower /= max;
-                rightTargetPower /= max;
+            // Intake Logic
+            if (gamepad2.left_stick_y < -0.2) {
+                intake.setPower(INTAKE_IN_POWER);
+                intake2.setPower(INTAKE_IN_POWER);
+            } else if (gamepad2.left_stick_y > 0.2) {
+                intake.setPower(INTAKE_OUT_POWER);
+                intake2.setPower(INTAKE_OUT_POWER);
+            } else {
+                intake.setPower(INTAKE_OFF_POWER);
+                intake2.setPower(INTAKE_OFF_POWER);
             }
 
-            left.setPower(leftPower);
-            right.setPower(rightPower);
-            leftT.setPower(leftTargetPower);
-            rightT.setPower(rightTargetPower);
-
-
-            {
-                DcMotor rightT;
-                DcMotor leftT;
-                DcMotor right;
-                DcMotor left;
-
-             /*   void init;
-                IMU revHubOrientationOnRobot;
-                for (IMU imu : new IMU[]{
-                        RevHubOrientationOnRobot revHubOrientationOnRobot(
-                        RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD ;
-                RevHubOrientationOnRobot.UsbFacingDirection.UP;
-            )
-                imu.initialize(new IMU.Parameters(RevOrientation));
-                right = hardwareMap.get(DcMotor.class, "right");
-                rightT = hardwareMap.get(DcMotor.class, "rightT");
-                left = hardwareMap.get(DcMotor.class, "left");
-                leftT = hardwareMap.get(DcMotor.class, "leftT");        
-
-            }){
-                public double getHeading () {
-                    return imu.getRobotYawPitchRollAngles().getYaw()
-                            
-                    rightT.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                    leftT.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                    right.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                    left.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                }
-                {
-                public double getHeading(AngleUnit
-                    AngleUnit angleunit;
-                    angleunit) {
-                    return imu.getRobotYawPitchRollAngles().getYaw(angleunit);
-                }
-                
-                public void setMotors( double power){
-                    rightT.setPower(power);
-                    right.setPower(power);
-                    left.setPower(power);
-                    leftT.setPower(power);
-                            
-                }
-
-                }
+            // Fat Servo (Linear Slide/Lifter)
+            if (gamepad2.dpad_up) {
+                fatmode = FatModes.UP;
+                fat.setPosition(FAT_UP_POS);
+            } else if (gamepad2.dpad_down) {
+                fatmode = FatModes.DOWN;
+                fat.setPosition(FAT_DOWN_POS);
             }
-            }*/
 
-                // MECHANISM LOGIC (Gamepad 2)
-
-                // Intake
-                boolean intakeInButton = gamepad2.left_stick_y > 0.2;
-                boolean intakeOutButton = gamepad2.left_stick_y > 0.2;
-                double intakePower;
-                if (intakeInButton) {
-                    intakePower = INTAKE_IN_POWER;
-                } else if (intakeOutButton) {
-                    intakePower = INTAKE_OUT_POWER;
-                } else {
-                    intakePower = INTAKE_OFF_POWER;
-                }
-                intake.setPower(intakePower);
-                intake2.setPower(intakePower);
-
-                // Fat (Linear Slide/Lifter)
-                boolean fatUpButton = gamepad2.dpad_up;
-                boolean fatDownButton = gamepad2.dpad_down;
-                FatModes fatmode;
-                double fatPower;
-                if (fatUpButton) {
-                    fatmode = FatModes.UP;
-                    fatPower = FAT_UP_POWER;
-                } else if (fatDownButton) {
-                    fatmode = FatModes.DOWN;
-                    fatPower = FAT_DOWN_POWER;
-                } else {
-                    fatmode = FatModes.OFF;
-                    fatPower = FAT_OFF_POWER;
-                }
-                fat.setPosition(fatPower);
-
-                // Catapult
-                boolean catapultUpButton = gamepad2.x;
-                boolean catapultDownButton = gamepad2.y;
-                //if(catapultUpButton && catapultDownButton){
-
-                if (catapultUpButton) {
-                    catapulta1.setPower(CATAPULTA_UP_POWER);
-                    catapulta2.setPower(CATAPULTA_UP_POWER);
-                } else if (catapultDownButton) {
-                    catapulta1.setPower(CATAPULTA_DOWN_POWER);
-                    catapulta2.setPower(CATAPULTA_DOWN_POWER);
-                } else {
-                    catapulta1.setPower(CATAPULTA_HOLD_POWER);
-                    catapulta2.setPower(CATAPULTA_HOLD_POWER);
-                }
-
-
-           /* boolean catapultUpButton = gamepad2.x;
-            CatapultaModes pivotMode;{
-            }  if (catapultUpButton) {
+            // Catapult Logic
+            if (gamepad2.x) {
                 pivotMode = CatapultaModes.UP;
-                catapulta1.setPower(CATAPULTA_UP_POWER);
-                catapulta2.setPower(CATAPULTA_UP_POWER);
+                setCatapultPower(CATAPULTA_UP_POWER);
+            } else if (gamepad2.y) {
+                pivotMode = CatapultaModes.DOWN;
+                setCatapultPower(CATAPULTA_DOWN_POWER);
             } else {
                 pivotMode = CatapultaModes.HOLD;
-                catapulta1.setPower(CATAPULTA_HOLD_POWER);
-                catapulta2.setPower(CATAPULTA_HOLD_POWER);
+                setCatapultPower(CATAPULTA_HOLD_POWER);
             }
-/
-            boolean catapultDownButton = gamepad2.y; {
-                if (catapultDownButton) {
-                    pivotMode = CatapultaModes.DOWN;
-                    catapulta1.setPower(CATAPULTA_DOWN_POWER);
-                    catapulta2.setPower(CATAPULTA_DOWN_POWER);
-                }   else {
-                        pivotMode = CatapultaModes.HOLD;
-                        catapulta1.setPower(CATAPULTA_HOLD_POWER);
-                        catapulta2.setPower(CATAPULTA_HOLD_POWER);
-            }*/
 
-
-                // Telemetry
-                telemetry.addData("Status", "Run Time: " + runtime.toString());
-                telemetry.addData("Drive Powers", "FL:%.2f, FR:%.2f, BL:%.2f, BR:%.2f",
-                        leftPower, rightPower, leftTargetPower, rightTargetPower);
-                telemetry.addData("Intake Power", "%.2f", intake.getPower());
-                telemetry.addData("Foot MODE", "%s", fatmode);
-                telemetry.addData("Catapult MODE", "%s", pivotMode);
-                telemetry.update();
-            }
+            // Telemetry
+            telemetry.addData("Status", "Run Time: " + runtime.toString());
+            telemetry.addData("Fat Mode", fatmode);
+            telemetry.addData("Catapult Mode", pivotMode);
+            telemetry.addData("Heading", imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
+            telemetry.update();
         }
+    }
+
+    // Helper method for Catapult
+    private void setCatapultPower(double power) {
+        catapulta1.setPower(power);
+        catapulta2.setPower(power);
+    }
+
+    // Mecanum Drive Math
+    public void drive(double forward, double strafe, double rotate) {
+        double frontLeftPower = forward + strafe + rotate;
+        double backLeftPower = forward - strafe + rotate;
+        double frontRightPower = forward + strafe - rotate;
+        double backRightPower = forward - strafe - rotate;
+
+        // Normalize powers so no value exceeds 1.0
+        double max = Math.max(1.0, Math.abs(frontLeftPower));
+        max = Math.max(1.0, Math.abs(backLeftPower));
+        max = Math.max(1.0, Math.abs(frontRightPower));
+        max = Math.max(1.0, Math.abs(backRightPower));
+
+        frontLeftMotor.setPower(frontLeftPower / max);
+        BackLeftMotor.setPower(backLeftPower / max);
+        frontRightMotor.setPower(frontRightPower / max);
+        BackRightMotor.setPower(backRightPower / max);
+    }
+
+    // Field Centric Drive Math
+    public void driveFieldRelative(double forward, double strafe, double rotate) {
+        double robotHeading = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
+
+        // Rotate the movement vectors by the robot's heading
+        double rotX = strafe * Math.cos(-robotHeading) - forward * Math.sin(-robotHeading);
+        double rotY = strafe * Math.sin(-robotHeading) + forward * Math.cos(-robotHeading);
+
+        drive(rotY, rotX, rotate);
     }
 }
