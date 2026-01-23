@@ -163,8 +163,8 @@ public class DecodeTeletop extends LinearOpMode {
         double robotHeading = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
 
         // Rotate the movement vectors by the robot's heading
-        double rotX = strafe * Math.cos(-robotHeading) - forward * Math.sin(-robotHeading);
-        double rotY = strafe * Math.sin(-robotHeading) + forward * Math.cos(-robotHeading);
+        double rotX = strafe * Math.cos(robotHeading) - forward * Math.sin(robotHeading);
+        double rotY = strafe * Math.sin(robotHeading) + forward * Math.cos(robotHeading);
 
         drive(rotY, rotX, rotate);
     }
