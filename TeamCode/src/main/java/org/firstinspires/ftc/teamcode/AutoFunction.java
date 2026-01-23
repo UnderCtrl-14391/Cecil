@@ -22,10 +22,10 @@ public class AutoFunction extends LinearOpMode {
         catapulta2 = hardwareMap.get(DcMotor.class, "catapulta2");
 
         // REVERSE left motors so the robot moves forward correctly
-        left.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftT.setDirection(DcMotorSimple.Direction.REVERSE);
-        right.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightT.setDirection(DcMotorSimple.Direction.FORWARD);
+        left.setDirection(DcMotorSimple.Direction.FORWARD);
+        leftT.setDirection(DcMotorSimple.Direction.FORWARD);
+        right.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightT.setDirection(DcMotorSimple.Direction.REVERSE);
         intake.setDirection(DcMotor.Direction.REVERSE);
         intake2.setDirection(DcMotor.Direction.FORWARD);
         

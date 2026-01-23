@@ -15,10 +15,23 @@ public class AzulMedioEncoder extends AutoFunction {
                 autonomous(0, 0, 0, 0, 0, 0, 0, 0, 0);
                 sleep(1000);
                 //sair pro primeiro load
-                autonomous(-1600, -1600, -1600, -1600, 0.7, 0.7, 0, 0, 0);
+                autonomous(-2200, -2200, -2200, -2200, 0.7, 0.7, 0, 0, 0);
                 sleep(1000);
                 telemetry.update();
-                //
+                //giro load
+                autonomous(-700 , 700 , -700 , 700, 0.7 , 0.7 , 0 , 0 , 0);
+                sleep(900);
+                telemetry.update();
+                //load
+                autonomous(1700 , 1700 , 1700 , 1700, 0.5 , 0.5 , 0 , 0 , 0);
+                sleep(1050);
+                telemetry.update();
+                //caminho pontuar
+                autonomous(1666 , 877 , -1666 , -2229, 0.7 , 0.7 , 0 , 0 , 0);
+                sleep(1000);
+                telemetry.update();
+
+
             }
         }
     }
