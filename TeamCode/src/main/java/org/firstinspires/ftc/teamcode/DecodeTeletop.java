@@ -83,7 +83,7 @@ public class DecodeTeletop extends LinearOpMode {
         while (opModeIsActive()) {
             // DRIVE LOGIC (Gamepad 1)
             double forward = gamepad1.left_stick_y; // Reversed because Y is negative up
-            double strafe = -gamepad1.left_stick_x;
+            double strafe = gamepad1.left_stick_x;
             double rotate = gamepad1.right_stick_x;
 
             // Choose one: drive() for robot-centric or driveFieldRelative() for field-centric

@@ -32,8 +32,10 @@ public class AutoFunction extends LinearOpMode {
         leftT.setDirection(DcMotorSimple.Direction.FORWARD);
         right.setDirection(DcMotorSimple.Direction.REVERSE);
         rightT.setDirection(DcMotorSimple.Direction.REVERSE);
-        intake.setDirection(DcMotor.Direction.REVERSE);
-        intake2.setDirection(DcMotor.Direction.FORWARD);
+        intake.setDirection(DcMotor.Direction.FORWARD);
+        intake2.setDirection(DcMotor.Direction.REVERSE);
+        catapulta1.setDirection(DcMotor.Direction.REVERSE);
+        catapulta2.setDirection(DcMotor.Direction.FORWARD);
         
         // Ensure mechanisms stop when power is 0
         left.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -81,8 +83,6 @@ public class AutoFunction extends LinearOpMode {
         rightT.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftT.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        catapulta1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        catapulta2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         // Set Powers
         right.setPower(rightPower);

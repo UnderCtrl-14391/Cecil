@@ -20,22 +20,33 @@ public class AzulMedioEncoder extends AutoFunction {
             sleep(600);
 
             //sair pro primeiro load
-            autonomous(-2200, -2200, -2200, -2200, 0.7, 0.7, 0, CatapultaModes.HOLD);
-            sleep(1000);
+            autonomous(-2250, -2250, -2250, -2250, 0.7, 0.7, 0, CatapultaModes.DOWN);
+            sleep(800);
 
             //giro load
-            autonomous(-700 , 700 , -700 , 700, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-            sleep(900);
+            autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.DOWN);
+            sleep(700);
 
-            //load
-            autonomous(1700 , 1700 , 1700 , 1700, 0.5 , 0.5 , 1 , CatapultaModes.HOLD);
-            sleep(1050);
+            //load - até aqui tá certo
+            autonomous(1900 , 1900 , 1900 , 1900, 0.5 , 0.5 , 1 , CatapultaModes.DOWN);
+            sleep(700);
+
+            //CAMINHO PONTUAR - RÉ
+            autonomous(-500 , -500 , -500 , -500, 0.7 , 0.7 , 1 , CatapultaModes.DOWN);
+            sleep(200);
 
             //caminho pontuar
-            autonomous(1666 , 877 , -1666 , -2229, 0.7 , 0.7 , 1 , CatapultaModes.HOLD);
+            autonomous(1700 , 1700 , -1700 , -1700, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
             sleep(1000);
 
-            //----
+            //GIRO pontuar
+            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.DOWN);
+            sleep(700);
+
+            //CAMINHO PONTUA - ENCOSTA NA PAREDE
+            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.UP);
+            sleep(400);
+
             telemetry.update();
 
 
