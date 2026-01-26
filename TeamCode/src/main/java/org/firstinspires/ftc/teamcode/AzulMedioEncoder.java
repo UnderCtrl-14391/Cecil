@@ -21,11 +21,11 @@ public class AzulMedioEncoder extends AutoFunction {
 
             //sair pro primeiro load
             autonomous(-2250, -2250, -2250, -2250, 0.7, 0.7, 0, CatapultaModes.DOWN);
-            sleep(800);
+            sleep(650);
 
             //giro load
             autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.DOWN);
-            sleep(700);
+            sleep(400);
 
             //load - até aqui tá certo
             autonomous(1900 , 1900 , 1900 , 1900, 0.5 , 0.5 , 1 , CatapultaModes.DOWN);
@@ -33,19 +33,23 @@ public class AzulMedioEncoder extends AutoFunction {
 
             //CAMINHO PONTUAR - RÉ
             autonomous(-500 , -500 , -500 , -500, 0.7 , 0.7 , 1 , CatapultaModes.DOWN);
-            sleep(200);
+            sleep(150);
 
             //caminho pontuar
             autonomous(1700 , 1700 , -1700 , -1700, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-            sleep(1000);
+            sleep(750);
 
             //GIRO pontuar
             autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.DOWN);
-            sleep(700);
+            sleep(450);
 
             //CAMINHO PONTUA - ENCOSTA NA PAREDE
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.UP);
-            sleep(400);
+            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
+            sleep(300);
+
+            //PONTUA
+            autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.UP);
+            sleep(150);
 
             telemetry.update();
 

@@ -25,8 +25,8 @@ public class DecodeTeletop extends LinearOpMode {
     public double INTAKE_OFF_POWER = 0.0;
 
     // Servo Positions (Adjust these values for your specific servo limits)
-    public double FAT_UP_POS = 1.0;
-    public double FAT_DOWN_POS = 0.0;
+    public double FAT_DOWN_POS = 1.0;
+    public double FAT_UP_POS = 0.0;
 
     public double CATAPULTA_UP_POWER = 1.0;
     public double CATAPULTA_DOWN_POWER = -1.0;
