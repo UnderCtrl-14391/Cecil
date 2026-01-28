@@ -20,17 +20,17 @@ public class DecodeTeletop extends LinearOpMode {
     private final ElapsedTime runtime = new ElapsedTime();
 
     // Constants
-    public double INTAKE_IN_POWER = 1.0;
-    public double INTAKE_OUT_POWER = -0.7;
+    public double INTAKE_IN_POWER = 0.7;
+    public double INTAKE_OUT_POWER = -0.9;
     public double INTAKE_OFF_POWER = 0.0;
 
     // Servo Positions (Adjust these values for your specific servo limits)
     public double FAT_DOWN_POS = 1.0;
     public double FAT_UP_POS = 0.0;
 
-    public double CATAPULTA_UP_POWER = 1.0;
-    public double CATAPULTA_DOWN_POWER = -1.0;
-    public double CATAPULTA_HOLD_POWER = -0.15; // Small power to resist gravity
+    public double CATAPULTA_UP_POWER = -1.0;
+    public double CATAPULTA_DOWN_POWER = 1.0;
+    public double CATAPULTA_HOLD_POWER = 0.15; // Small power to resist gravity
 
     // State tracking
     private enum CatapultaModes {UP, DOWN, HOLD}
@@ -104,10 +104,10 @@ public class DecodeTeletop extends LinearOpMode {
             }
 
             // Fat Servo (Linear Slide/Lifter)
-            if (gamepad2.dpad_up) {
+            if (gamepad1.dpad_up) {
                 fatmode = FatModes.UP;
                 fat.setPosition(FAT_UP_POS);
-            } else if (gamepad2.dpad_down) {
+            } else if (gamepad1.dpad_down) {
                 fatmode = FatModes.DOWN;
                 fat.setPosition(FAT_DOWN_POS);
             }
