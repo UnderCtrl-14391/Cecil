@@ -28,9 +28,9 @@ public class DecodeTeletop extends LinearOpMode {
     public double FAT_DOWN_POS = 1.0;
     public double FAT_UP_POS = 0.0;
 
-    public double CATAPULTA_UP_POWER = -1.0;
-    public double CATAPULTA_DOWN_POWER = 1.0;
-    public double CATAPULTA_HOLD_POWER = 0.15; // Small power to resist gravity
+    public double CATAPULTA_UP_POWER = 1.0;
+    public double CATAPULTA_DOWN_POWER = -1.0;
+    public double CATAPULTA_HOLD_POWER = -0.15; // Small power to resist gravity
 
     // State tracking
     private enum CatapultaModes {UP, DOWN, HOLD}

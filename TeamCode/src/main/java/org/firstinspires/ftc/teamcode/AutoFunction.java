@@ -12,7 +12,7 @@ public class AutoFunction extends LinearOpMode {
     public DcMotor left, right, leftT, rightT, intake, intake2, catapulta1, catapulta2;
     public double CATAPULTA_UP_POWER = 1.0;
     public double CATAPULTA_DOWN_POWER = -1.0;
-    public double CATAPULTA_HOLD_POWER = -0.15; // Small power to resist gravity
+    public double CATAPULTA_HOLD_POWER = -0.2; // Small power to resist gravity
 
     // State tracking
     public enum CatapultaModes {UP, DOWN, HOLD}

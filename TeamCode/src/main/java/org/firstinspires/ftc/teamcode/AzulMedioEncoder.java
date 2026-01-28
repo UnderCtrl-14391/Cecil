@@ -28,46 +28,69 @@ public class AzulMedioEncoder extends AutoFunction {
             sleep(150);
 
             //load - até aqui tá certo
-            autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
+            autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.DOWN);
             sleep(550);
 
             //CAMINHO PONTUAR - RÉ
-            autonomous(-500 , -500 , -500 , -500, 0.7 , 0.7 , 0.9 , CatapultaModes.HOLD);
+            autonomous(-500 , -500 , -500 , -500, 0.7 , 0.7 , 0.9 , CatapultaModes.DOWN);
             sleep(100);
 
             //caminho pontuar
-            autonomous(1700 , 1700 , -1700 , -1700, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+            autonomous(1700 , 1700 , -1700 , -1700, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
             sleep(500);
 
             //GIRO pontuar
-            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
+            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.DOWN);
             sleep(100);
 
             //CAMINHO PONTUA - ENCOSTA NA PAREDE
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
             sleep(250);
+
+
+            /*PONTUA
+            autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.UP);
+            sleep(150);*/
+
+            //CAMINHO LOAD 2
+            autonomous(-1800 , -1800 , -1800 , -1800 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
+            sleep(100);
+
+            //giro load 2
+            autonomous(-500 , 500 , -500 , 500, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
+            sleep(100);
+
+            //CAMINHO LOAD 2 - STRAFE
+            autonomous(-1700 , -1700 , 1700 , 1700, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+            sleep(100);
+
+            //LOAD 2
+            autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
+            sleep(100);
+
+            //RE - SCORE 2
+            autonomous(-500 , -500 , -500 , -500 , 0.8 , 0.8 , 0.9 , CatapultaModes.HOLD);
+            sleep(100);
+
+            //STRAFE - SCORE 2
+            autonomous(3400 , 3400 , -3400 , -3400 ,0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+            sleep(300);
+
+            //GIRO pontuar
+            autonomous(600 , -600 , 600 , -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+            sleep(100);
+
+            //CAMINHO PONTUA - ENCOSTA NA PAREDE
+            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
+            sleep(100);
 
             //ABAIXA
             autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.DOWN);
-            sleep(10);
+            sleep(100);
 
             // PONTUA
             autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.UP);
-            sleep(150);
-
-            //CAMINHO PRO LOAD 2ª FILEIRA
-            autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
-            sleep(400);
-
-            //GIRO PRO LOAD 2ª FILEIRA
-            autonomous(-600 , 600 , -600 , 600 , 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            sleep(150);
-
-            /*STRAFE 2ª COLETA
-            autonomous(-600, -600, 600, 600, 0.7, 0.7, 0, CatapultaModes.HOLD);
-            sleep(600);*/
-
-
+            sleep(100);
 
             telemetry.update();
 
