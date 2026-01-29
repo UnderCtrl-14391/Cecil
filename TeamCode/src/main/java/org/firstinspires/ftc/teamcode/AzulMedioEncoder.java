@@ -48,9 +48,9 @@ public class AzulMedioEncoder extends AutoFunction {
             sleep(250);
 
 
-            /*PONTUA
-            autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.UP);
-            sleep(150);*/
+            //PONTUA
+            autonomous(10 , 10 , 10 , 10, 0.8 , 0.8 , 0 , CatapultaModes.UP);
+            sleep(150);
 
             //CAMINHO LOAD 2
             autonomous(-1800 , -1800 , -1800 , -1800 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
