@@ -13,39 +13,39 @@ public class AzulMedioEncoder extends AutoFunction {
         if (opModeIsActive()) {
             //abaixar catapulta
             autonomous(0, 0, 0, 0, 0, 0, 0, CatapultaModes.DOWN);
-            sleep(150);
+            sleep(100);
 
             //pontuar
             autonomous(0, 0, 0, 0, 0, 0, 0, CatapultaModes.UP);
-            sleep(600);
+            sleep(150);
 
             //sair pro primeiro load
-            autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.HOLD);
-            sleep(400);
+            autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
+            sleep(100);
 
             //giro load
             autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-            sleep(150);
+            sleep(100);
 
             //load - até aqui tá certo
-            autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.DOWN);
-            sleep(550);
+            autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
+            sleep(200);
 
             //CAMINHO PONTUAR - RÉ
-            autonomous(-500 , -500 , -500 , -500, 0.7 , 0.7 , 0.9 , CatapultaModes.DOWN);
+            autonomous(-500 , -500 , -500 , -500, 0.7 , 0.7 , 0.9 , CatapultaModes.HOLD);
             sleep(100);
 
             //caminho pontuar
-            autonomous(1700 , 1700 , -1700 , -1700, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-            sleep(500);
+            autonomous(1700 , 1700 , -1700 , -1700, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+            sleep(100);
 
             //GIRO pontuar
-            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.DOWN);
+            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
             sleep(100);
 
             //CAMINHO PONTUA - ENCOSTA NA PAREDE
             autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-            sleep(250);
+            sleep(100);
 
 
             //PONTUA
@@ -61,11 +61,11 @@ public class AzulMedioEncoder extends AutoFunction {
             sleep(100);
 
             //CAMINHO LOAD 2 - STRAFE
-            autonomous(-1700 , -1700 , 1700 , 1700, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+            autonomous(-1900 , -1900 , 1900 , 1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
             sleep(100);
 
             //LOAD 2
-            autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
+            autonomous(1800 , 1800 , 1800 , 1800, 0.5 , 0.5 , 0.9 , CatapultaModes.HOLD);
             sleep(100);
 
             //RE - SCORE 2
@@ -74,14 +74,14 @@ public class AzulMedioEncoder extends AutoFunction {
 
             //STRAFE - SCORE 2
             autonomous(3400 , 3400 , -3400 , -3400 ,0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            sleep(300);
+            sleep(100);
 
             //GIRO pontuar
             autonomous(600 , -600 , 600 , -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
             sleep(100);
 
             //CAMINHO PONTUA - ENCOSTA NA PAREDE
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
+            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
             sleep(100);
 
             //ABAIXA
