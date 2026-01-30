@@ -11,25 +11,28 @@ public class ParedeAzulEncoder extends AutoFunction {
         waitForStart();
         if (opModeIsActive()) {
         autonomous(0,0,0,0,0,0,0, CatapultaModes.DOWN);
-        sleep(5000);
+        sleep(3000);
 
-        autonomous(500,-500,-500,500,0.8,0.8,0, CatapultaModes.DOWN);
-        sleep(350);
+        autonomous(-500,-500,500,500,0.8,0.8,0, CatapultaModes.HOLD);
+        //sleep(100);
 
-        autonomous(500,500,500,500,0.8,0.8,0, CatapultaModes.DOWN);
-        sleep(400);
+        autonomous(500,500,500,500,0.8,0.8,0, CatapultaModes.HOLD);
+        //sleep(100);
 
-        autonomous(600,-600,600,-600,0.7,0.7,0, CatapultaModes.DOWN);
-        sleep(600);
+        autonomous(600,-600,600,-600,0.7,0.7,0, CatapultaModes.HOLD);
+        //sleep(200);
+
+        autonomous(300,300,300,300,0.8,0.8,0, CatapultaModes.DOWN);
+        //sleep(150);
 
         autonomous(0,0,0,0,0,0,0, CatapultaModes.UP);
-        sleep(500);
+        //sleep(100);
 
-        autonomous(-600,600,-600,600,0.7,0.7,0,CatapultaModes.HOLD);
-        sleep(600);
+        autonomous(-600,600,-600,600,0.7,0.7,0,CatapultaModes.DOWN);
+        //sleep(100);
 
-        autonomous(-1200,-1200,-1200,-1200,0.8,0.8,0,CatapultaModes.DOWN);
-        sleep(1200);
+        autonomous(-2000,-2000,-2000,-2000,0.8,0.8,0,CatapultaModes.HOLD);
+        //sleep(1200);
 
         telemetry.update();
 
