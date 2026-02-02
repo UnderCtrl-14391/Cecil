@@ -2,9 +2,14 @@ package org.firstinspires.ftc.teamcode;
 
 import static org.firstinspires.ftc.teamcode.TimerExample.runtime;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
 
 @Autonomous
 public class ParedeAzulEncoder extends AutoFunction {
+
+    private static ElapsedTime runtime = new ElapsedTime();
+
     @Override
     public void runOpMode() {
         HardwareMap(hardwareMap);
