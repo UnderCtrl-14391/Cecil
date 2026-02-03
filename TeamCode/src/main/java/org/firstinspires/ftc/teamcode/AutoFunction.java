@@ -6,6 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 @Autonomous
 public class AutoFunction extends LinearOpMode{
 
@@ -64,51 +66,53 @@ public class AutoFunction extends LinearOpMode{
         }
     }
 
-    public void autonomous(double rightPower, double leftPower, double rightTPower , double leftTPower, double intakeP, CatapultaModes catapultaPower) {
+
+    public void stopMotors(){
+        right.setPower(0);
+        rightT.setPower(0);
+        left.setPower(0);
+        leftT.setPower(0);
+    }
+
+    public void stopResetMotors(){
         // Reset Encoders
-        right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightT.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        leftT.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+
+
+    public void autonomous(int rightFront, int leftFront, int rightTarget, int leftTarget ,double rightPower, double leftPower, double intakeP, CatapultaModes catapultaPower) {
 
         // Set Targets
-        /*right.setTargetPosition(rightFront);
+        right.setTargetPosition(rightFront);
         left.setTargetPosition(leftFront);
         rightT.setTargetPosition(rightTarget);
-        leftT.setTargetPosition(leftTarget);*/
-
+        leftT.setTargetPosition(leftTarget);
 
         // Set to RUN_TO_POSITION
-        /*right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightT.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftT.setMode(DcMotor.RunMode.RUN_TO_POSITION);*/
+        leftT.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         // Set Powers
         right.setPower(rightPower);
-        rightT.setPower(rightTPower);
+        rightT.setPower(rightPower);
         left.setPower(leftPower);
-        leftT.setPower(leftTPower);
-        
+        leftT.setPower(leftPower);
+
         intake.setPower(intakeP);
         intake2.setPower(intakeP);
 
         setCatapultaModes(catapultaPower);
 
-        
-
-
-        while (opModeIsActive() &&
-                (right.isBusy() ||
-                        rightT.isBusy() ||
-                        left.isBusy() ||
-                        leftT.isBusy() ||
-                        catapulta1.isBusy() ||
-                        catapulta2.isBusy())){
-            idle();
-
+        while (opModeIsActive() && (right.isBusy() || rightT.isBusy() || left.isBusy() || leftT.isBusy())) {
+            telemetry.addData("right", right.getCurrentPosition());
+            telemetry.update();
         }
-
+        stopMotors();
     }
 
     @Override

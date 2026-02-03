@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Constants {
     public static FollowerConstants followerConstants = new FollowerConstants()
-            .mass(5);
+            .mass(9.7);
 
     public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
 
@@ -44,9 +44,9 @@ public class Constants {
             .rightFrontEncoderDirection(Encoder.FORWARD)
             .rightRearEncoderDirection(Encoder.FORWARD)
             .robotLength(17.785)
-            .robotWidth(18);
-            //.forwardTicksToInches(multiplier)
-            //.strafeTicksToInches(multiplier)
-            //.turnTicksToInches(multiplier)
+            .robotWidth(18)
+            .forwardTicksToInches(-3.3389024837011307)
+            .strafeTicksToInches(0.6395)
+            .turnTicksToInches(-0.2692);
 
 }
