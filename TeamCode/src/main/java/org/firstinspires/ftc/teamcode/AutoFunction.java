@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @Autonomous
-public class AutoFunction extends LinearOpMode {
+public class AutoFunction extends LinearOpMode{
 
     public DcMotor left, right, leftT, rightT, intake, intake2, catapulta1, catapulta2;
     public double CATAPULTA_UP_POWER = 1.0;
@@ -64,31 +64,31 @@ public class AutoFunction extends LinearOpMode {
         }
     }
 
-    public void autonomous(int rightFront, int leftFront, int rightTarget, int leftTarget, double rightPower, double leftPower, double intakeP, CatapultaModes catapultaPower) {
+    public void autonomous(double rightPower, double leftPower, double rightTPower , double leftTPower, double intakeP, CatapultaModes catapultaPower) {
         // Reset Encoders
-        right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        right.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightT.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        left.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftT.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Set Targets
-        right.setTargetPosition(rightFront);
+        /*right.setTargetPosition(rightFront);
         left.setTargetPosition(leftFront);
         rightT.setTargetPosition(rightTarget);
-        leftT.setTargetPosition(leftTarget);
+        leftT.setTargetPosition(leftTarget);*/
 
 
         // Set to RUN_TO_POSITION
-        right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        /*right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightT.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        leftT.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftT.setMode(DcMotor.RunMode.RUN_TO_POSITION);*/
 
         // Set Powers
         right.setPower(rightPower);
-        rightT.setPower(rightPower);
+        rightT.setPower(rightTPower);
         left.setPower(leftPower);
-        leftT.setPower(leftPower);
+        leftT.setPower(leftTPower);
         
         intake.setPower(intakeP);
         intake2.setPower(intakeP);
@@ -115,8 +115,5 @@ public class AutoFunction extends LinearOpMode {
     public void runOpMode() {
         HardwareMap(hardwareMap);
         waitForStart();
-        
-        // Example: Move forward 1000 ticks with 50% power
-        autonomous(1000, 1000, 1000, 1000, 0.5, 0.5, 0,  CatapultaModes.UP);
-}    }
+    }    }
 

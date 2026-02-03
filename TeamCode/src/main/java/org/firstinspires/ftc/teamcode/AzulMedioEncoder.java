@@ -1,9 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
 public class AzulMedioEncoder extends AutoFunction {
+
+    private final ElapsedTime runtime = new ElapsedTime();
+    private boolean done = false;
 
     @Override
     public void runOpMode() {
@@ -11,48 +15,79 @@ public class AzulMedioEncoder extends AutoFunction {
 
         waitForStart();
         if (opModeIsActive()) {
-            //abaixar catapulta
-            autonomous(0, 0, 0, 0, 0, 0, 0, CatapultaModes.DOWN);
-           sleep(100);
+                //abaixar catapulta
+                autonomous(0, 0, 0, 0 ,0 , CatapultaModes.DOWN);
+                sleep(100);
+                //pontuar
+                autonomous(0, 0, 0, 0 , 0, CatapultaModes.UP);
+                sleep(100);
+                runtime.reset();
+                while(runtime.seconds() < 0.5 ){
+                    //sair pro primeiro load
+                    autonomous( -0.9, -0.9, -0.9 , -0.9 , 0, CatapultaModes.DOWN);
+                }
+                while(runtime.seconds() < 0.7 ){
+                    //giro load
+                    autonomous( -0.8, 0.8, -0.8 , 0.8 , 0, CatapultaModes.HOLD);
+                }
+                while(runtime.seconds() < 1.4){
+                    //strafe load
+                    autonomous(-0.8 , -0.8 , 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+                }
+                while(runtime.seconds() < 2.2 ) {
+                    //load - até aqui tá certo
+                    autonomous( 0.6, 0.6, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
+                }
+                while(runtime.seconds() < 2.6 ) {
+                    //CAMINHO PONTUAR - RÉ
+                    autonomous( -0.9, -0.9, -0.9 , -0.9 , 0.9, CatapultaModes.HOLD);
+                }
+                while(runtime.seconds() < 3.1 ) {
+                    //caminho pontuar - strafe
+                    autonomous(0.8, 0.8, -0.8, -0.8, 0, CatapultaModes.HOLD);
+                }
+                while(runtime.seconds() < 3.4) {
+                    //GIRO pontuar
+                    autonomous(0.8, -0.8, 0.8, -0.8, 0, CatapultaModes.HOLD);
+                }
+                while(runtime.seconds() < 4.2){
+                    //CAMINHO PONTUA - ENCOSTA NA PAREDE
+                    autonomous(0.9, 0.9, 0.9, 0.9, 0 ,  CatapultaModes.HOLD);
+                }
+                while(runtime.seconds() < 4.7){
+                    autonomous(0, 0, 0, 0, 0 ,  CatapultaModes.HOLD);
 
-            //pontuar
-            autonomous(0, 0, 0, 0, 0, 0, 0, CatapultaModes.UP);
-           sleep(150);
+                }
 
-            //sair pro primeiro load
-            autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
-            sleep(100);
+                //PONTUA
+                autonomous(0 , 0 , 0 , 0, 0.8  , CatapultaModes.DOWN);
+                sleep(10);
+                //PONTUA
+                autonomous(0 , 0 , 0 , 0, 0.8  , CatapultaModes.UP);
+                sleep(10);
 
-            //giro load
-            autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-            sleep(100);
-
-            //load - até aqui tá certo
-            autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
-            sleep(200);
-
-            //CAMINHO PONTUAR - RÉ
-            autonomous(-570 , -570 , -570 , -570, 0.8 , 0.8 , 0.9 , CatapultaModes.HOLD);
-            sleep(100);
-
-            //caminho pontuar
-            autonomous(1770 , 1770 , -1770 , -1770, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            sleep(100);
-
-            //GIRO pontuar
-            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-            sleep(10);
-
-            //CAMINHO PONTUA - ENCOSTA NA PAREDE
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-            sleep(10);
-
-
-            //PONTUA
-            autonomous(0 , 0 , 0 , 0, 0.8 , 0.8 , 0 , CatapultaModes.UP);
-            sleep(10);
-
-            //CAMINHO LOAD 2
+                runtime.reset();
+                while(runtime.seconds() < 0.5 ){
+                    //sair pro primeiro load
+                    autonomous( -0.9,
+                            //giro load
+                            autonomous( -0.8, 0.8, -0.8 , 0.8 , 0, CatapultaModes.HOLD);
+                }
+                 while(runtime.seconds() < 0.7){
+                //strafe load//// -0.9, -0.9 , -0.9 , 0, CatapultaModes.DOWN);
+               }
+                while(runtime.seconds() < 2.3){
+                     autonomous(-0.8 , -0.8 , 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+                }
+                while(runtime.seconds() < 2.5) {
+                    //load - até aqui tá certo
+                    autonomous( 0.6, 0.6, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
+                }
+                 while(runtime.seconds() < 2.9){
+                     //CAMINHO PONTUAR - RÉ
+                     autonomous( -0.9, -0.9, -0.9 , -0.9 , 0.9, CatapultaModes.HOLD);
+                 }
+            /*CAMINHO LOAD 2
             autonomous(-1800 , -1800 , -1800 , -1800 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
             sleep(100);
 
@@ -89,7 +124,7 @@ public class AzulMedioEncoder extends AutoFunction {
             sleep(100);
 
             // PONTUA
-            autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.UP);
+            autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.UP);*/
             sleep(100);
 
             telemetry.update();
