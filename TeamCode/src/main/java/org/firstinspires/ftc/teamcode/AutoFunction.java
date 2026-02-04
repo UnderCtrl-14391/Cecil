@@ -82,6 +82,15 @@ public class AutoFunction extends LinearOpMode{
         leftT.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
+    public void Catapulta_score(){
+        setCatapultaModes(CatapultaModes.DOWN);
+        sleep(100);
+        setCatapultaModes(CatapultaModes.UP);
+        sleep(100);
+
+
+    }
+
 
     public void autonomous(int rightFront, int leftFront, int rightTarget, int leftTarget ,double rightPower, double leftPower, double intakeP, CatapultaModes catapultaPower) {
 

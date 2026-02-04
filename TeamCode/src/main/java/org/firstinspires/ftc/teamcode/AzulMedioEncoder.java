@@ -23,10 +23,10 @@ public class AzulMedioEncoder extends AutoFunction {
 
         waitForStart();
         if (opModeIsActive()) {
-                //autonomous(0, 0, 0, 0 ,0 , 0,0,CatapultaModes.DOWN);
-                //waitSeconds(0.1);
-
-                //autonomous(0, 0, 0, 0 ,0 , 0,0, CatapultaModes.UP);
+                stopResetMotors();
+                Catapulta_score();
+                waitSeconds(0.02);
+                
                 stopResetMotors();
                 autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
                 waitSeconds(0.02);
@@ -55,14 +55,8 @@ public class AzulMedioEncoder extends AutoFunction {
                 autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
                 waitSeconds(0.02);
 
-                stopResetMotors();
-                autonomous(0 , 0 , 0 , 0, 0.8  ,0.8 , 0 , CatapultaModes.DOWN);
+                Catapulta_score();
                 waitSeconds(0.02);
-
-                stopResetMotors();
-                autonomous(0 , 0 , 0 , 0, 0.8  , 0.8 , 0 , CatapultaModes.UP);
-                waitSeconds(0.02);
-
 
             /*CAMINHO LOAD 2
             autonomous(-1800 , -1800 , -1800 , -1800 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
