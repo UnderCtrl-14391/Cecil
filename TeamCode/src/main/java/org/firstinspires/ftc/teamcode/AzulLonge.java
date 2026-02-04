@@ -1,10 +1,18 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.pedropathing.follower.Follower;
+import com.pedropathing.geometry.BezierLine;
+import com.pedropathing.geometry.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.pedropathing.paths.PathChain;
+import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
+
 @Autonomous
-public class VermelhoLonge extends AutoFunction{
+public class AzulLonge extends AutoFunction{
     private final ElapsedTime runtime = new ElapsedTime();
 
     public void waitSeconds(double seconds){
@@ -28,7 +36,9 @@ public class VermelhoLonge extends AutoFunction{
             waitSeconds(0.005);
 
             stopResetMotors();
-            autonomous(1070 , -1070 , 1070 , -1070, 0.7 , 0.7 , 0 , AutoFunction.CatapultaModes.HOLD);
+            autonomous(-1000 , 1000 , -1000 , 1000, 0.7 , 0.7 , 0 , AutoFunction.CatapultaModes.HOLD);
         }
     }
+
+
 }
