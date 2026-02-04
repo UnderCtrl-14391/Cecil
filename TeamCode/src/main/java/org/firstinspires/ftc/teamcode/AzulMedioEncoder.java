@@ -26,7 +26,7 @@ public class AzulMedioEncoder extends AutoFunction {
                 stopResetMotors();
                 Catapulta_score();
                 waitSeconds(0.02);
-                
+
                 stopResetMotors();
                 autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
                 waitSeconds(0.02);
@@ -58,19 +58,19 @@ public class AzulMedioEncoder extends AutoFunction {
                 Catapulta_score();
                 waitSeconds(0.02);
 
-            /*CAMINHO LOAD 2
-            autonomous(-1800 , -1800 , -1800 , -1800 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-            sleep(100);
+                stopResetMotors();
+                autonomous(-1800 , -1800 , -1800 , -1800 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
+                waitSeconds(0.02);
 
-            //giro load 2
-            autonomous(-550 , 550 , -550 , 550, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-            sleep(100);
+                stopResetMotors();
+                autonomous(-550 , 550 , -550 , 550, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
+                waitSeconds(0.02);
 
-            //CAMINHO LOAD 2 - STRAFE
-            autonomous(-1900 , -1900 , 1900 , 1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            sleep(100);
+                stopResetMotors();
+                autonomous(-1900 , -1900 , 1900 , 1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
+                waitSeconds(0.02);
 
-            //LOAD 2
+            /*LOAD 2
             autonomous(1540 , 1540 , 1540 , 1540, 0.5 , 0.5 , 0.9 , CatapultaModes.HOLD);
             sleep(100);
 
