@@ -3,11 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous
-public class ParedeAzulEncoder extends AutoFunction {
+public class ParedeVermelho extends AutoFunction {
 
     private final ElapsedTime runtime = new ElapsedTime();
 
@@ -28,11 +25,11 @@ public class ParedeAzulEncoder extends AutoFunction {
             waitSeconds(3);
 
             stopResetMotors();
-            autonomous(-1300, -1300, 1300, 1300, 0.8, 0.8, 0, CatapultaModes.HOLD);
+            autonomous(1300, 1300, -1300, -1300, 0.8, 0.8, 0, CatapultaModes.HOLD);
             waitSeconds(0);
 
             stopResetMotors();
-            autonomous(410, -410, 410, -410, 0.7, 0.7, 0, CatapultaModes.HOLD);
+            autonomous(-410, 410, -410, 410, 0.7, 0.7, 0, CatapultaModes.HOLD);
             waitSeconds(0);
 
             stopResetMotors();
@@ -43,7 +40,7 @@ public class ParedeAzulEncoder extends AutoFunction {
             waitSeconds(0);
 
             stopResetMotors();
-            autonomous(-600,600,-600,600,0.7,0.7,0,CatapultaModes.DOWN);
+            autonomous(600,-600,600,-600,0.7,0.7,0,CatapultaModes.DOWN);
             waitSeconds(0);
 
             stopResetMotors();
@@ -51,7 +48,7 @@ public class ParedeAzulEncoder extends AutoFunction {
             waitSeconds(0);
 
             stopResetMotors();
-            autonomous(-5000, -5000, 5000, 5000, 0.8, 0.8, 0, CatapultaModes.HOLD);
+            autonomous(5000, 5000, -5000, -5000, 0.8, 0.8, 0, CatapultaModes.HOLD);
 
             telemetry.update();
         }
