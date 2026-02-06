@@ -41,7 +41,9 @@ public class DecodeTeletop extends LinearOpMode {
     private enum FatModes {UP, DOWN, OFF}
     private CatapultaModes pivotMode = CatapultaModes.HOLD;
     private FatModes fatmode = FatModes.OFF;
-
+    public void resetIMU(){
+        imu.resetYaw();
+    }
     @Override
     public void runOpMode() {
         // 1. HARDWARE MAPPING
@@ -133,6 +135,9 @@ public class DecodeTeletop extends LinearOpMode {
             } else {
                 pivotMode = CatapultaModes.HOLD;
                 setCatapultPower(CATAPULTA_HOLD_POWER);
+            }
+            if (gamepad1.startWasPressed()){
+                resetIMU();
             }
 
             // Telemetry
