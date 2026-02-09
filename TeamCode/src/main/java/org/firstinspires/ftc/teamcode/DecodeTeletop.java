@@ -88,12 +88,12 @@ public class DecodeTeletop extends LinearOpMode {
 
         while (opModeIsActive()) {
             // DRIVE LOGIC (Gamepad 1)
-            if (gamepad1.right_trigger >= 0.05){
+            /*if (gamepad1.right_trigger >= 0.05){
                 frontLeftMotor.setPower(SLOW_DRIVETRAIN);
                 frontRightMotor.setPower(SLOW_DRIVETRAIN);
                 BackLeftMotor.setPower(SLOW_DRIVETRAIN);
                 BackRightMotor.setPower(SLOW_DRIVETRAIN);
-            }
+            }*/
 
             double forward = gamepad1.left_stick_y; // Reversed because Y is negative up
             double strafe = gamepad1.left_stick_x;
@@ -105,10 +105,10 @@ public class DecodeTeletop extends LinearOpMode {
             // MECHANISM LOGIC (Gamepad 2)
 
             // Intake Logic
-            if (gamepad2.left_stick_y < -0.2) {
+            if (gamepad1.left_trigger > 0.2) {
                 intake.setPower(INTAKE_IN_POWER);
                 intake2.setPower(INTAKE_IN_POWER);
-            } else if (gamepad2.left_stick_y > 0.2) {
+            } else if (gamepad1.right_trigger > 0.2) {
                 intake.setPower(INTAKE_OUT_POWER);
                 intake2.setPower(INTAKE_OUT_POWER);
             } else {
@@ -126,10 +126,10 @@ public class DecodeTeletop extends LinearOpMode {
             }
 
             // Catapult Logic
-            if (gamepad2.x) {
+            if (gamepad1.x) {
                 pivotMode = CatapultaModes.UP;
                 setCatapultPower(CATAPULTA_UP_POWER);
-            } else if (gamepad2.y) {
+            } else if (gamepad1.y) {
                 pivotMode = CatapultaModes.DOWN;
                 setCatapultPower(CATAPULTA_DOWN_POWER);
             } else {
