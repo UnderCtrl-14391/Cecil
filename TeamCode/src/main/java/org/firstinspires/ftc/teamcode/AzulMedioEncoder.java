@@ -23,6 +23,8 @@ public class AzulMedioEncoder extends AutoFunction {
 
         waitForStart();
         if (opModeIsActive()) {
+                runtime.reset();
+                stopResetMotors();
 
                 while(runtime.seconds() < 1.8){
                     autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
@@ -36,7 +38,7 @@ public class AzulMedioEncoder extends AutoFunction {
 
                 stopResetMotors();
 
-                while(runtime.seconds() > 1.8 && runtime.seconds() < 2.5){
+                while( runtime.seconds() < 2.5){
                     autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
                     break;
                 }

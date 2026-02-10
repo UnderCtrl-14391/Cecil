@@ -56,11 +56,7 @@ public class Constants {
             .rightRearEncoderDirection(Encoder.FORWARD)
             .robotLength(17.785)
             .robotWidth(18)
-            .forwardTicksToInches(-3.3389024837011307)
-            .strafeTicksToInches(0.6395)
-            .turnTicksToInches(-0.2692);
-    
-    public static double getHeadingRadians() {
-        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
-    }
+            .forwardTicksToInches(12.124653110812874)
+            .strafeTicksToInches(2.003484932465931E-7)
+            .turnTicksToInches(0.013927390127441854);
 }
