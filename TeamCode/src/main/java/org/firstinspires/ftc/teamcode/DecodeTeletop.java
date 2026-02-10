@@ -138,6 +138,7 @@ public class DecodeTeletop extends LinearOpMode {
             }
             if (gamepad1.startWasPressed()){
                 resetIMU();
+                imu.initialize(new IMU.Parameters(orientationOnRobot));
             }
 
             // Telemetry
