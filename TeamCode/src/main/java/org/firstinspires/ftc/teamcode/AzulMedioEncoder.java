@@ -6,15 +6,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous
 public class AzulMedioEncoder extends AutoFunction {
 
-    private final ElapsedTime runtime = new ElapsedTime();
+
     private boolean done = false;
 
-    public void waitSeconds(double seconds){
-        runtime.reset();
-        while(runtime.seconds() <= seconds){
 
-        }
-    }
 
 
     @Override
@@ -23,25 +18,17 @@ public class AzulMedioEncoder extends AutoFunction {
 
         waitForStart();
         if (opModeIsActive()) {
-                runtime.reset();
-                stopResetMotors();
+            stopResetMotors();
 
-                while(runtime.seconds() < 1.8){
-                    autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
-                    break;
+            autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN , 1.8);
 
-                }
 
                 /*stopResetMotors();
                 Catapulta_score();
                 waitSeconds(0.02);*/
 
-                stopResetMotors();
-
-                while( runtime.seconds() < 2.5){
-                    autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-                    break;
-                }
+            stopResetMotors();
+            autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD , 0.7);
 
                 /*stopResetMotors();
                 autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);

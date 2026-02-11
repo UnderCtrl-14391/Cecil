@@ -32,11 +32,11 @@ public class AzulLonge extends AutoFunction{
             stopResetMotors();
             waitSeconds(23);
 
-            autonomous(1400 , 1400 ,1400 , 1400, 0.8 , 0.8 , 0 , AutoFunction.CatapultaModes.DOWN);
+            /*autonomous(1400 , 1400 ,1400 , 1400, 0.8 , 0.8 , 0 , AutoFunction.CatapultaModes.DOWN);
             waitSeconds(0.005);
 
             stopResetMotors();
-            autonomous(-1000 , 1000 , -1000 , 1000, 0.7 , 0.7 , 0 , AutoFunction.CatapultaModes.HOLD);
+            autonomous(-1000 , 1000 , -1000 , 1000, 0.7 , 0.7 , 0 , AutoFunction.CatapultaModes.HOLD);*/
         }
     }
 

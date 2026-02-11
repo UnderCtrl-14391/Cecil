@@ -21,7 +21,7 @@ public class ParedeVermelho extends AutoFunction {
         waitForStart();
         if (opModeIsActive()) {
             stopResetMotors();
-            autonomous(-1400, -1400, -1400, -1400, 0.8, 0.8, 0, CatapultaModes.DOWN);
+            /*autonomous(-1400, -1400, -1400, -1400, 0.8, 0.8, 0, CatapultaModes.DOWN);
             waitSeconds(3);
 
             stopResetMotors();
@@ -48,7 +48,7 @@ public class ParedeVermelho extends AutoFunction {
             waitSeconds(0);
 
             stopResetMotors();
-            autonomous(5000, 5000, -5000, -5000, 0.8, 0.8, 0, CatapultaModes.HOLD);
+            autonomous(5000, 5000, -5000, -5000, 0.8, 0.8, 0, CatapultaModes.HOLD);*/
 
             telemetry.update();
         }

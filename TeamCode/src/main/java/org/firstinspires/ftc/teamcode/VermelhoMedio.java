@@ -25,7 +25,7 @@ public class VermelhoMedio extends AutoFunction{
             waitSeconds(0.02);
 
             stopResetMotors();
-            autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
+            /*autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
             waitSeconds(0.02);
 
             stopResetMotors();
@@ -65,7 +65,7 @@ public class VermelhoMedio extends AutoFunction{
 
             stopResetMotors();
             autonomous(1900 , 1900 , -1900 , -1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            waitSeconds(0.02);
+            waitSeconds(0.02);*/
 
             telemetry.update();
 

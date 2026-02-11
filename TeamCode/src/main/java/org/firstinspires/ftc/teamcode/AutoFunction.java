@@ -5,11 +5,14 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 @Autonomous
 public class AutoFunction extends LinearOpMode{
+
+    private final ElapsedTime runtime = new ElapsedTime();
 
     public DcMotor left, right, leftT, rightT, intake, intake2, catapulta1, catapulta2;
     public double CATAPULTA_UP_POWER = 1.0;
@@ -92,7 +95,7 @@ public class AutoFunction extends LinearOpMode{
     }
 
 
-    public void autonomous(int rightFront, int leftFront, int rightTarget, int leftTarget ,double rightPower, double leftPower, double intakeP, CatapultaModes catapultaPower) {
+    public void autonomous(int rightFront, int leftFront, int rightTarget, int leftTarget ,double rightPower, double leftPower, double intakeP, CatapultaModes catapultaPower , double timerLimit) {
 
         // Set Targets
         right.setTargetPosition(rightFront);
@@ -117,7 +120,9 @@ public class AutoFunction extends LinearOpMode{
 
         setCatapultaModes(catapultaPower);
 
-        while (opModeIsActive() && (right.isBusy() || rightT.isBusy() || left.isBusy() || leftT.isBusy())) {
+        runtime.reset();
+
+        while (opModeIsActive() && runtime.seconds() < timerLimit && (right.isBusy() || rightT.isBusy() || left.isBusy() || leftT.isBusy())) {
             telemetry.addData("right", right.getCurrentPosition());
             telemetry.update();
         }
