@@ -53,41 +53,41 @@ public class AzulMedioEncoder extends AutoFunction {
             autonomous(-600 , 600 , -600 , 600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
 
             stopResetMotors();
-            autonomous(-1900 , -1900 , 1900 , 1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(-1900 , -1900 , 1900 , 1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
-            autonomous(2200 , 2200 , 2200 , 2200, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(2200 , 2200 , 2200 , 2200, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
-            autonomous(-600 , -600 , -600, -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(-600 , -600 , -600, -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
-            autonomous(1900 , 1900 , -1900 , -1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(1900 , 1900 , -1900 , -1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
-            autonomous(600 , -600 , 600 , -600, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 0.4);
+            autonomous(600 , -600 , 600 , -600, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 1.4);
 
             stopResetMotors();
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 0.4);
+            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 1.4);
 
 
             Catapulta_score();
             autonomous(-540 , 540 , -540 , 540, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
 
             stopResetMotors();
-            autonomous(-600 , 600 , -600 , 600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(-600 , 600 , -600 , 600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
-            autonomous(-2500 , -2500 , 2500 , 2500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(-2500 , -2500 , 2500 , 2500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
-            autonomous(2200 , 2200 , 2200 , 2200, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(2200 , 2200 , 2200 , 2200, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
-            autonomous(-600 , -600 , -600, -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(-600 , -600 , -600, -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
-            autonomous(2500 , 2500 , -2500 , -2500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(2500 , 2500 , -2500 , -2500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
 
             stopResetMotors();
             autonomous(600 , -600 , 600 , -600, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 0.4);
