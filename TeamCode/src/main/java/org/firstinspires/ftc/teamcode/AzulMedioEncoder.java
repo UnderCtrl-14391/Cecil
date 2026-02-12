@@ -49,11 +49,11 @@ public class AzulMedioEncoder extends AutoFunction {
             Catapulta_score();
             autonomous(-540 , 540 , -540 , 540, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
 
-            stopResetMotors();
+            /*stopResetMotors();
             autonomous(-600 , 600 , -600 , 600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
 
             stopResetMotors();
-            autonomous(-1900 , -1900 , 1900 , 1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(-2100 , -2100 , 2100 , 2100, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.8);
 
             stopResetMotors();
             autonomous(2200 , 2200 , 2200 , 2200, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
