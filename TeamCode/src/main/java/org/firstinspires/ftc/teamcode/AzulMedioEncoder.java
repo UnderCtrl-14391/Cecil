@@ -1,16 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
 public class AzulMedioEncoder extends AutoFunction {
-
-
-    private boolean done = false;
-
-
-
 
     @Override
     public void runOpMode() {
@@ -21,101 +14,81 @@ public class AzulMedioEncoder extends AutoFunction {
 
             Catapulta_score();
 
-            stopResetMotors();//
-            autonomous(-1200, -1200, -1200, -1200, 0.8, 0.8, 0, CatapultaModes.HOLD , 1.2);
+            stopResetMotors();
+            autonomous(-1200, -1200, -1200, -1200, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.2);
 
-            stopResetMotors();//
-            autonomous(-540 , 540 , -540 , 540, 0.7 , 0.7 , 0 , CatapultaModes.HOLD , 0.6);
+            stopResetMotors();
+            autonomous(-540, 540, -540, 540, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.6);
 
-            stopResetMotors();//
-            autonomous(-1100 , -1100 , 1100 , 1100 , 0.8 , 0.8, 0 , CatapultaModes.HOLD, 1.2);
+            stopResetMotors();
+            autonomous(-1100, -1100, 1100, 1100, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.2);
 
-            stopResetMotors();//
-            autonomous(2000 , 2000 , 2000 , 2000, 0.5 , 0.5 , 0.9 , CatapultaModes.HOLD , 2.15);
+            stopResetMotors();
+            autonomous(2000, 2000, 2000, 2000, 0.5, 0.5, 0.9, CatapultaModes.HOLD, 2.15);
 
-            stopResetMotors();//
-            autonomous(-570 , -570 , -570 , -570, 0.8 , 0.8 , 0.9 , CatapultaModes.HOLD , 0.5);
+            stopResetMotors();
+            autonomous(-570, -570, -570, -570, 0.8, 0.8, 0.9, CatapultaModes.HOLD, 0.5);
 
-            stopResetMotors();//
-            autonomous(1770 , 1770 , -1770 , -1770, 0.8 , 0.8 , 0.9 , CatapultaModes.DOWN , 1.15);
+            stopResetMotors();
+            autonomous(1770, 1770, -1770, -1770, 0.8, 0.8, 0.9, CatapultaModes.DOWN, 1.15);
 
-            stopResetMotors();//
-            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD , 0.5);
+            stopResetMotors();
+            autonomous(600, -600, 600, -600, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.5);
 
-            stopResetMotors();//
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
-
+            stopResetMotors();
+            autonomous(500, 500, 500, 500, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.4);
 
             Catapulta_score();
-            autonomous(-540 , 540 , -540 , 540, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
-
-            /*stopResetMotors();
-            autonomous(-600 , 600 , -600 , 600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(-540, 540, -540, 540, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.4);
 
             stopResetMotors();
-            autonomous(-2100 , -2100 , 2100 , 2100, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.8);
+            autonomous(-600, 600, -600, 600, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.4);
 
             stopResetMotors();
-            autonomous(2200 , 2200 , 2200 , 2200, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(-2100, -2100, 2100, 2100, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.8);
 
             stopResetMotors();
-            autonomous(-600 , -600 , -600, -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(2200, 2200, 2200, 2200, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(1900 , 1900 , -1900 , -1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(-600, -600, -600, -600, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(600 , -600 , 600 , -600, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 1.4);
+            autonomous(1900, 1900, -1900, -1900, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 1.4);
+            autonomous(600, -600, 600, -600, 0.8, 0.8, 0, CatapultaModes.DOWN, 1.4);
 
+            stopResetMotors();
+            autonomous(500, 500, 500, 500, 0.8, 0.8, 0, CatapultaModes.DOWN, 1.4);
 
             Catapulta_score();
-            autonomous(-540 , 540 , -540 , 540, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
+            autonomous(-540, 540, -540, 540, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.4);
 
             stopResetMotors();
-            autonomous(-600 , 600 , -600 , 600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(-600, 600, -600, 600, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(-2500 , -2500 , 2500 , 2500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(-2500, -2500, 2500, 2500, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(2200 , 2200 , 2200 , 2200, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(2200, 2200, 2200, 2200, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(-600 , -600 , -600, -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(-600, -600, -600, -600, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(2500 , 2500 , -2500 , -2500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 1.4);
+            autonomous(2500, 2500, -2500, -2500, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(600 , -600 , 600 , -600, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 0.4);
+            autonomous(600, -600, 600, -600, 0.8, 0.8, 0, CatapultaModes.DOWN, 0.4);
 
             stopResetMotors();
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN , 0.4);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            autonomous(500, 500, 500, 500, 0.8, 0.8, 0, CatapultaModes.DOWN, 0.4);
 
             Catapulta_score();
 
             telemetry.update();
-
-
-            }
         }
     }
-
+}
