@@ -18,80 +18,50 @@ public class AzulMedioEncoder extends AutoFunction {
 
         waitForStart();
         if (opModeIsActive()) {
-            stopResetMotors();
 
-            autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN , 1.8);
-
-
-                /*stopResetMotors();
-                Catapulta_score();
-                waitSeconds(0.02);*/
+            Catapulta_score();
 
             stopResetMotors();
-            autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD , 0.7);
+            autonomous(-1200, -1200, -1200, -1200, 0.8, 0.8, 0, CatapultaModes.HOLD , 1.2);
 
-                /*stopResetMotors();
-                autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
-                waitSeconds(0.02);
+            stopResetMotors();
+            autonomous(-540 , 540 , -540 , 540, 0.7 , 0.7 , 0 , CatapultaModes.HOLD , 0.6);
 
-                stopResetMotors();
-                autonomous(-570 , -570 , -570 , -570, 0.8 , 0.8 , 0.9 , CatapultaModes.HOLD);
-                waitSeconds(0.02);
+            stopResetMotors();
+            autonomous(-1100 , -1100 , 1100 , 1100 , 0.8 , 0.8, 0 , CatapultaModes.HOLD, 1.2);
 
-                stopResetMotors();
-                autonomous(1770 , 1770 , -1770 , -1770, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-                waitSeconds(0.02);
+            stopResetMotors();
+            autonomous(2000 , 2000 , 2000 , 2000, 0.5 , 0.5 , 0.9 , CatapultaModes.HOLD , 2.15);
 
-                stopResetMotors();
-                autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-                waitSeconds(0.02);
+            stopResetMotors();
+            autonomous(-570 , -570 , -570 , -570, 0.8 , 0.8 , 0.9 , CatapultaModes.HOLD , 0.5);
 
-                stopResetMotors();
-                autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-                waitSeconds(0.02);
+            stopResetMotors();
+            autonomous(1770 , 1770 , -1770 , -1770, 0.8 , 0.8 , 0.9 , CatapultaModes.DOWN , 1.15);
 
-                Catapulta_score();
-                waitSeconds(0.02);
+            stopResetMotors();
+            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD , 0.5);
 
-                stopResetMotors();
-                autonomous(-1800 , -1800 , -1800 , -1800 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-                waitSeconds(0.02);
+            stopResetMotors();
+            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
 
-                stopResetMotors();
-                autonomous(-550 , 550 , -550 , 550, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-                waitSeconds(0.02);
 
-                stopResetMotors();
-                autonomous(-1900 , -1900 , 1900 , 1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-                waitSeconds(0.02);
+            Catapulta_score();
+            autonomous(-540 , 540 , -540 , 540, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
 
-            /*LOAD 2
-            autonomous(1540 , 1540 , 1540 , 1540, 0.5 , 0.5 , 0.9 , CatapultaModes.HOLD);
-            sleep(100);
+            Catapulta_score();
+            autonomous(-1100 , -1100 , 1100 , 1100, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
 
-            //RE - SCORE 2
-            autonomous(-500 , -500 , -500 , -500 , 0.8 , 0.8 , 0.9 , CatapultaModes.HOLD);
-            sleep(100);
+            Catapulta_score();
+            autonomous(2000 , 2000 , 2000 , 2000, 0.8 , 0.8 , 0 , CatapultaModes.HOLD , 0.4);
 
-            //STRAFE - SCORE 2
-            autonomous(3400 , 3400 , -3400 , -3400 ,0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            sleep(100);
 
-            //GIRO pontuar 2
-            autonomous(600 , -600 , 600 , -600, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            sleep(100);
 
-            //CAMINHO PONTUA - ENCOSTA NA PAREDE
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            sleep(100);
 
-            //ABAIXA
-            autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.DOWN);
-            sleep(100);
 
-            // PONTUA
-            autonomous(0 , 0 , 0 , 0, 0 , 0 , 0 , CatapultaModes.UP);
-            sleep(100);*/
+
+
+            Catapulta_score();
 
             telemetry.update();
 
