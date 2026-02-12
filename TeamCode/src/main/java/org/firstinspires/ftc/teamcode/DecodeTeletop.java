@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -59,10 +60,10 @@ public class DecodeTeletop extends LinearOpMode {
         fat = hardwareMap.get(Servo.class, "fat");
 
         // 2. MOTOR DIRECTIONS
-        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        BackLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
-        BackRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        BackLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
 
         intake.setDirection(DcMotor.Direction.REVERSE);
         intake2.setDirection(DcMotor.Direction.FORWARD);
@@ -95,9 +96,9 @@ public class DecodeTeletop extends LinearOpMode {
                 BackRightMotor.setPower(SLOW_DRIVETRAIN);
             }*/
 
-            double forward = gamepad1.left_stick_y; // Reversed because Y is negative up
+            double forward = -gamepad1.left_stick_y; // Reversed because Y is negative up
             double strafe = gamepad1.left_stick_x;
-            double rotate = gamepad1.right_stick_x;
+            double rotate = -gamepad1.right_stick_x;
 
             // Choose one: drive() for robot-centric or driveFieldRelative() for field-centric
             driveFieldRelative(forward, strafe, rotate);
