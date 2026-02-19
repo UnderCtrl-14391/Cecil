@@ -3,11 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous
-public class ParedeAzulEncoder extends AutoFunction {
+public class Azul_parede_3 extends AutoFunction {
 
     private final ElapsedTime runtime = new ElapsedTime();
 

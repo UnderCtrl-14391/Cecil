@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous
-public class AzulMedioEncoder extends AutoFunction {
+public class Azul_9 extends AutoFunction {
 
     @Override
     public void runOpMode() {

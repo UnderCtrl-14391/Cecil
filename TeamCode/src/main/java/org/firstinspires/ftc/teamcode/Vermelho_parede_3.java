@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
-public class ParedeVermelho extends AutoFunction {
+public class Vermelho_parede_3 extends AutoFunction {
 
     private final ElapsedTime runtime = new ElapsedTime();
 

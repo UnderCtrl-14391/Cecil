@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
-public class VermelhoLonge extends AutoFunction{
+public class Azul_Leave extends AutoFunction{
     private final ElapsedTime runtime = new ElapsedTime();
 
     public void waitSeconds(double seconds){
@@ -28,7 +28,9 @@ public class VermelhoLonge extends AutoFunction{
             waitSeconds(0.005);
 
             stopResetMotors();
-            autonomous(1070 , -1070 , 1070 , -1070, 0.7 , 0.7 , 0 , AutoFunction.CatapultaModes.HOLD);*/
+            autonomous(-1000 , 1000 , -1000 , 1000, 0.7 , 0.7 , 0 , AutoFunction.CatapultaModes.HOLD);*/
         }
     }
+
+
 }

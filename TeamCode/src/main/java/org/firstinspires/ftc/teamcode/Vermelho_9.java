@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
-public class VermelhoMedio extends AutoFunction{
+public class Vermelho_9 extends AutoFunction{
     private final ElapsedTime runtime = new ElapsedTime();
 
     public void waitSeconds(double seconds){
