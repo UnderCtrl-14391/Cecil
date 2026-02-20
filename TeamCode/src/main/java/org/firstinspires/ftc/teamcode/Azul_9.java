@@ -28,7 +28,7 @@ public class Azul_9 extends AutoFunction {
             //stopResetMotors();
             //autonomous(-100, 100, -100, -100, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.5);
 
-            /*load 1
+            //load 1
             stopResetMotors();
             autonomous(2000, 2000, 2000, 2000, 0.5, 0.5, 0.9, CatapultaModes.HOLD, 2.15);
 
