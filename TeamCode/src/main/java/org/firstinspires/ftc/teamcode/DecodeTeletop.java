@@ -63,7 +63,7 @@ public class DecodeTeletop extends LinearOpMode {
         frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         BackLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        BackRightMotor.setDirection(DcMotor.Direction.FORWARD);
 
         intake.setDirection(DcMotor.Direction.REVERSE);
         intake2.setDirection(DcMotor.Direction.FORWARD);
@@ -97,7 +97,7 @@ public class DecodeTeletop extends LinearOpMode {
             }*/
 
             double forward = -gamepad1.left_stick_y; // Reversed because Y is negative up
-            double strafe = gamepad1.left_stick_x;
+            double strafe = -gamepad1.left_stick_x;
             double rotate = -gamepad1.right_stick_x;
 
             // Choose one: drive() for robot-centric or driveFieldRelative() for field-centric
@@ -161,8 +161,8 @@ public class DecodeTeletop extends LinearOpMode {
 
 
     public void drive(double forward, double strafe, double rotate) {
-        double frontLeftPower = forward + strafe + rotate;
-        double backLeftPower = forward - strafe + rotate;
+        double frontLeftPower = forward - strafe + rotate;
+        double backLeftPower = forward + strafe + rotate;
         double frontRightPower = forward + strafe - rotate;
         double backRightPower = forward - strafe - rotate;
 
