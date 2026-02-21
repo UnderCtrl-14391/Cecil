@@ -36,7 +36,7 @@ public class AutoFunction extends LinearOpMode{
         left.setDirection(DcMotor.Direction.FORWARD);
         leftT.setDirection(DcMotor.Direction.FORWARD);
         right.setDirection(DcMotor.Direction.FORWARD);
-        rightT.setDirection(DcMotor.Direction.FORWARD);
+        rightT.setDirection(DcMotor.Direction.REVERSE);
 
         intake.setDirection(DcMotor.Direction.FORWARD);
         intake2.setDirection(DcMotor.Direction.REVERSE);
@@ -128,6 +128,9 @@ public class AutoFunction extends LinearOpMode{
             telemetry.update();
         }
         stopMotors();
+    }
+    public void timerReset() {
+        runtime.reset();
     }
 
     @Override
