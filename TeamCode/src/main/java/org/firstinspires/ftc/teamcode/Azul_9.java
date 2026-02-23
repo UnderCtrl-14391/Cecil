@@ -15,24 +15,26 @@ public class Azul_9 extends AutoFunction {
             //score 3 balls
             Catapulta_score();
 
+            //DA ESQUERDAS UM POUCO MAIORES OS NMRS DO QUE NA DIREITA
+
 
             //Ré - Load 1
             stopResetMotors();
-            autonomous(-1800, -1800, -1800, -1800, 0.7, 0.8, 0, CatapultaModes.HOLD, 1.26);
+            autonomous(-1800, -1850, -1800, -1850, 0.4, 0.7, 0, CatapultaModes.HOLD, 1.26);
 
             //Giro load 1
             stopResetMotors();
-            autonomous(-600, 600, -600, 600, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.4);
+            autonomous(-600, 650, -600, 650, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.4);
 
             //strafe load 1
-            //stopResetMotors();
-            //autonomous(-100, 100, -100, -100, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.5);
+            stopResetMotors();
+            autonomous(-100, 150, -100, -150, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.5);
 
             /*load 1
             stopResetMotors();
             autonomous(2000, 2000, 2000, 2000, 0.5, 0.5, 0.9, CatapultaModes.HOLD, 2.15);
 
-            /* ré - score 6 balls
+            // ré - score 6 balls
             stopResetMotors();
             autonomous(-570, -570, -570, -570, 0.8, 0.8, 0.9, CatapultaModes.HOLD, 0.5);
 
