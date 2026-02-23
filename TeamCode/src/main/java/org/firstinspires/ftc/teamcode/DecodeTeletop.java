@@ -60,7 +60,7 @@ public class DecodeTeletop extends LinearOpMode {
         fat = hardwareMap.get(Servo.class, "fat");
 
         // 2. MOTOR DIRECTIONS
-        frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);//FORWARD
         BackLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
