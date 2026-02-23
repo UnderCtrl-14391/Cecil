@@ -33,7 +33,7 @@ public class TELEMETRY extends LinearOpMode {
             telemetry.addData("LeftTarget" , leftT.getCurrentPosition());
             telemetry.addData("Left" , left.getCurrentPosition());
             telemetry.addData("RightTarget" , rightT.getCurrentPosition());
-            telemetry.addData("Right" , rightT.getCurrentPosition());
+            telemetry.addData("Right" , right.getCurrentPosition());
             telemetry.update();
         }
     }
