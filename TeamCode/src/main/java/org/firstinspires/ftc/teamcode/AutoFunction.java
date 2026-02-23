@@ -35,7 +35,7 @@ public class AutoFunction extends LinearOpMode{
         // REVERSE left motors so the robot moves forward correctly
         left.setDirection(DcMotor.Direction.FORWARD);
         leftT.setDirection(DcMotor.Direction.FORWARD);
-        right.setDirection(DcMotor.Direction.FORWARD);
+        right.setDirection(DcMotor.Direction.REVERSE);
         rightT.setDirection(DcMotor.Direction.FORWARD);
 
         intake.setDirection(DcMotor.Direction.FORWARD);
