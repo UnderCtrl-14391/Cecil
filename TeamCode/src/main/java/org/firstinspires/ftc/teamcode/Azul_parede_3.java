@@ -17,15 +17,18 @@ public class Azul_parede_3 extends AutoFunction {
             autonomous(121212,1212121210,12121210,12212121,0,0,0,CatapultaModes.HOLD,3);
 
             stopResetMotors();
-            autonomous( -400, 400, 400, -400, 0.8, 0.8, 0, CatapultaModes.DOWN, 0.3);
+            autonomous( 400, -450, -400, 450, 0.8, 0.8, 0, CatapultaModes.DOWN, 0.3);
 
             stopResetMotors();
             autonomous(500, 500, 500, 500, 0.8, 0.8, 0, CatapultaModes.HOLD, 1);
 
+            stopResetMotors();
+            autonomous(900,-950,900,-950,0.8,0.8,0,CatapultaModes.HOLD,1);
+
             Catapulta_score();
 
-            //stopResetMotors();
-            autonomous(-1410, -1410, -1410, -1410, 0.8, 0.8, 0, CatapultaModes.HOLD,1);
+            stopResetMotors();
+            autonomous(-1410, -1460, -1410, -1460, 0.8, 0.8, 0, CatapultaModes.HOLD,1);
             //waitSeconds(0);
 
             /*stopResetMotors();
