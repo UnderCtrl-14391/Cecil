@@ -13,7 +13,7 @@ public class TesteAuto extends AutoFunction{
         waitForStart();
         if(opModeIsActive()){
             stopResetMotors();
-            autonomous(1500 , 1500 , 1500 , 1500 , 0.1 , 0.6 , 0 , CatapultaModes.HOLD , 2);
+            autonomous(1500 , 1500 , 1500 , 1500 , 0.1 , 0.6 , 0 , CatapultaModes.HOLD , 9);
             telemetry.update();
         }
     }

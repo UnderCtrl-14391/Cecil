@@ -14,21 +14,21 @@ public class Azul_parede_3 extends AutoFunction {
         if (opModeIsActive()) {
 
             stopResetMotors();
-            autonomous(121212,1212121210,12121210,12212121,0,0,0,CatapultaModes.HOLD,3);
+            autonomous(121212,1212121210,12121210,12212121,0,0,0,CatapultaModes.HOLD , 0);
 
             stopResetMotors();
-            autonomous( 400, -450, -400, 450, 0.8, 0.8, 0, CatapultaModes.DOWN, 0.3);
+            autonomous( 400, -450, -400, 450, 0.8, 0.8, 0, CatapultaModes.DOWN , 0);
 
             stopResetMotors();
-            autonomous(700, 700, 700, 700, 0.8, 0.8, 0, CatapultaModes.HOLD, 1);
+            autonomous(700, 700, 700, 700, 0.8, 0.8, 0, CatapultaModes.HOLD , 0);
 
             Catapulta_score();
 
             stopResetMotors();
-            autonomous(-900,0,0,-950,0.8,0.8,0,CatapultaModes.HOLD,1);
+            autonomous(-900,0,0,-950,0.8,0.8,0,CatapultaModes.HOLD , 0);
 
             stopResetMotors();
-            autonomous(-300, 300, -300, 300, 0.8, 0.8, 0, CatapultaModes.HOLD,1);
+            autonomous(-300, 300, -300, 300, 0.8, 0.8, 0, CatapultaModes.HOLD , 0);
             //waitSeconds(0);
 
             /*stopResetMotors();

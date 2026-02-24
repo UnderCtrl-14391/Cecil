@@ -31,8 +31,8 @@ public class DecodeTeletop extends LinearOpMode {
     public double FAT_DOWN_POS = 1.0;
     public double FAT_UP_POS = 0.0;
 
-    public double CATAPULTA_UP_POWER = 2.0;
-    public double CATAPULTA_DOWN_POWER = -2.0;
+    public double CATAPULTA_UP_POWER = 3.0;
+    public double CATAPULTA_DOWN_POWER = -3.0;
     public double CATAPULTA_HOLD_POWER = -0.15; // Small power to resist gravity
 
     public double SLOW_DRIVETRAIN = 0.3;
@@ -62,7 +62,7 @@ public class DecodeTeletop extends LinearOpMode {
         // 2. MOTOR DIRECTIONS
         frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);//FORWARD
         BackLeftMotor.setDirection(DcMotor.Direction.FORWARD);
-        frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
         BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
 
         intake.setDirection(DcMotor.Direction.REVERSE);
@@ -183,8 +183,8 @@ public class DecodeTeletop extends LinearOpMode {
         double robotHeading = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
 
         // Rotate the movement vectors by the robot's heading
-        double rotX = strafe * Math.cos(robotHeading) - forward * Math.sin(robotHeading);
-        double rotY = strafe * Math.sin(robotHeading) + forward * Math.cos(robotHeading);
+        double rotX = strafe * Math.cos(-robotHeading) - forward * Math.sin(-robotHeading);
+        double rotY = strafe * Math.sin(-robotHeading) + forward * Math.cos(-robotHeading);
 
         drive(rotY, rotX, rotate);
     }
