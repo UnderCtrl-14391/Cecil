@@ -13,16 +13,16 @@ public class Azul_9 extends AutoFunction {
         if (opModeIsActive()) {
 
             //score 3 balls
-            Catapulta_score();
+            //Catapulta_score();
 
 
             //Ré - Load 1
             stopResetMotors();
-            autonomous(-1700, -1750, -1700, -1750, 0.7, 0.8, 0, CatapultaModes.HOLD, 1.26);
+            autonomous(-1700, -1750, -1700, -1750, 0.7, 0.7, 0, CatapultaModes.HOLD, 1.26);
 
             //Giro load 1
-            stopResetMotors();
-            autonomous(-300, 350, -300, 350, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.4);
+            //stopResetMotors();
+            //autonomous(-300, 350, -300, 350, 0.7, 0.7, 0, CatapultaModes.HOLD, 0.4);
 
             //strafe load 1
             //stopResetMotors();
@@ -112,6 +112,12 @@ public class Azul_9 extends AutoFunction {
 
 
             Catapulta_score();*/
+
+            telemetry.addData("LeftTarget" , leftT.getCurrentPosition());
+            telemetry.addData("Left" , left.getCurrentPosition());
+            telemetry.addData("RightTarget" , rightT.getCurrentPosition());
+            telemetry.addData("Right" , right.getCurrentPosition());
+            telemetry.update();
 
             telemetry.update();
         }
