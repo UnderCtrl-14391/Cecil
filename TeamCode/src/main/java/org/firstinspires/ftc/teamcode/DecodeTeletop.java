@@ -23,7 +23,7 @@ public class DecodeTeletop extends LinearOpMode {
     private final ElapsedTime runtime = new ElapsedTime();
 
     // Constants
-    public double INTAKE_IN_POWER = 0.7;
+    public double INTAKE_IN_POWER = 0.9;
     public double INTAKE_OUT_POWER = -0.9;
     public double INTAKE_OFF_POWER = 0.0;
 

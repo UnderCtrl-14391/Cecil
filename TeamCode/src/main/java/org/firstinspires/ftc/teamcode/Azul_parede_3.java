@@ -14,32 +14,40 @@ public class Azul_parede_3 extends AutoFunction {
         if (opModeIsActive()) {
 
             stopResetMotors();
-            autonomous(121212,1212121210,12121210,12212121,0,0,0,CatapultaModes.HOLD , 0);
+            autonomous(450,450,450,450,0.8,0.8,0,CatapultaModes.DOWN, 0.7);
 
             stopResetMotors();
-            autonomous( 400, -450, -400, 450, 0.8, 0.8, 0, CatapultaModes.DOWN , 0);
+            autonomous( 400, -450, -400, 450, 0.8, 0.8, 0, CatapultaModes.DOWN , .67);
 
             stopResetMotors();
-            autonomous(700, 700, 700, 700, 0.8, 0.8, 0, CatapultaModes.HOLD , 0);
+            autonomous(0, 0, 0, 0, 0, 0, 0, CatapultaModes.HOLD , 0.8);
 
             Catapulta_score();
 
             stopResetMotors();
-            autonomous(-900,0,0,-950,0.8,0.8,0,CatapultaModes.HOLD , 0);
+            autonomous(-600, 600, 600, 600,0.8,0.8,0,CatapultaModes.HOLD , 1.5);
 
             stopResetMotors();
-            autonomous(-300, 300, -300, 300, 0.8, 0.8, 0, CatapultaModes.HOLD , 0);
+            autonomous(650, -650, -650, 650, 0.8, 0.8, 0, CatapultaModes.HOLD , 1.5);
             //waitSeconds(0);
 
-            /*stopResetMotors();
-            autonomous(2000, 2000, 2000, 2000, 0.8, 0.8, 0, CatapultaModes.HOLD, 1);
+            stopResetMotors();
+            autonomous(300, 300, 300, 300, 0.8, 0.8, 0, CatapultaModes.HOLD, 1);
+            //waitSeconds(0);
+
+            stopResetMotors();
+            autonomous(300, -300, -300, 300, 0.8, 0.8, 0, CatapultaModes.HOLD, 1);
+            //waitSeconds(0);
+
+            stopResetMotors();
+            autonomous(100, 100, 100, 100, 0.8, 0.8, 0, CatapultaModes.HOLD, 1);
             //waitSeconds(0);
 
             Catapulta_score();
             //waitSeconds(0);
 
             stopResetMotors();
-            autonomous(-600,600,-600,600,0.7,0.7,0,CatapultaModes.DOWN, 1);
+            /*autonomous(-600,600,-600,600,0.7,0.7,0,CatapultaModes.DOWN, 1);
             //waitSeconds(0);
 
             stopResetMotors();
