@@ -70,7 +70,7 @@ public class Azul_9 extends AutoFunction {
 
             //load 2
             stopResetMotors();
-            autonomous(2200, 2200, 2200, 2200, 0.85, 0.85, 0.7, CatapultaModes.HOLD, 1.5);
+            autonomous(2200, 2200, 2200, 2200, 0.85, 0.85, 0.5, CatapultaModes.HOLD, 1.5);
 
             stopResetMotors();
             autonomous(789 , 8789 , 87678 , 789 , 0 , 0 , 0.7 , CatapultaModes.HOLD , 0.5);
@@ -94,23 +94,22 @@ public class Azul_9 extends AutoFunction {
 
             //score 9 balls
             Catapulta_score();
-
-            /*autonomous(-540, 540, -540, 540, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.4);
-
-            stopResetMotors();
-            autonomous(-600, 600, -600, 600, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
+            autonomous(-1750, -1750, -1750, -1750, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.26);
 
             stopResetMotors();
-            autonomous(-2500, -2500, 2500, 2500, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
+            autonomous(-450, 450, -450, 450, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.87);
 
             stopResetMotors();
-            autonomous(2200, 2200, 2200, 2200, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
+            autonomous(3000, -3000, -3000, 3000, 0.8, 0.8, 0, CatapultaModes.HOLD, 2.5);
+
+            stopResetMotors();
+            autonomous(2200, 2200, 2200, 2200, 0.8, 0.8, 0.7, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
             autonomous(-600, -600, -600, -600, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
-            autonomous(2500, 2500, -2500, -2500, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
+            /*autonomous(2500, 2500, -2500, -2500, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.4);
 
             stopResetMotors();
             autonomous(600, -600, 600, -600, 0.8, 0.8, 0, CatapultaModes.DOWN, 0.4);
