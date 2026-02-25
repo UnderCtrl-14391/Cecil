@@ -22,50 +22,48 @@ public class Vermelho_9 extends AutoFunction{
         if (opModeIsActive()) {
             stopResetMotors();
             Catapulta_score();
-            waitSeconds(0.02);
 
             stopResetMotors();
-            /*autonomous(-2250, -2250, -2250, -2250, 0.8, 0.8, 0, CatapultaModes.DOWN);
-            waitSeconds(0.02);
+            autonomous(-1750, -1750, -1750, -1750, 0.8, 0.8, 0, CatapultaModes.DOWN,1.26);
+            //waitSeconds(0.02);
 
             stopResetMotors();
-            autonomous(600 , -600 , 600 , -600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-            waitSeconds(0.02);
+            autonomous(450 , -450 , 450 , -450, 0.7 , 0.7 , 0 , CatapultaModes.HOLD,0.8);
+            //waitSeconds(0.02);
 
             stopResetMotors();
-            autonomous(2000 , 2000 , 2000 , 2000, 0.6 , 0.6 , 0.9 , CatapultaModes.HOLD);
-            waitSeconds(0.02);
+            autonomous(-800 , 800 , 800 , -800, 0.8 , 0.8 , 0 , CatapultaModes.HOLD,0.7);
+            //waitSeconds(0.02);
 
             stopResetMotors();
-            autonomous(-570 , -570 , -570 , -570, 0.8 , 0.8 , 0.9 , CatapultaModes.HOLD);
-            waitSeconds(0.02);
+            autonomous(2000 , 2000 , 2000 , 2000, 0.5 , 0.5 , 0.7 , CatapultaModes.HOLD,2.1);
+            //waitSeconds(0.02);
 
             stopResetMotors();
-            autonomous(-1770 , -1770 , 1770 , 1770, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            waitSeconds(0.02);
+            autonomous(-177032 , -177032 , 177320 , 177000, 0 , 0 , 0.7 , CatapultaModes.HOLD,0.5);
+            //waitSeconds(0.02);
 
             stopResetMotors();
-            autonomous(-600 , 600 , -600 , 600, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-            waitSeconds(0.02);
+            autonomous(-600 , -600 , -600 , -600, 0.8 , 0.8 , 0.7 , CatapultaModes.HOLD,0.6);
+            //waitSeconds(0.02);
 
             stopResetMotors();
-            autonomous(500 , 500 , 500 , 500, 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-            waitSeconds(0.02);
+            autonomous(1830 , -1830 , -1830 , 1830, 0.8 , 0.8 , 0.7 , CatapultaModes.DOWN,1.17);
+            //waitSeconds(0.06);
+
+            stopResetMotors();
+            autonomous(-450 , 450 , -450 , 450 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN,0.76);
+            //waitSeconds(0.02);
+
+            stopResetMotors();
+            autonomous(580 , 580 , 580 , 580, 0.7 , 0.7 , 0 , CatapultaModes.HOLD,0.47);
+            //waitSeconds(0.02);
 
             Catapulta_score();
-            waitSeconds(0.06);
 
             stopResetMotors();
-            autonomous(-1800 , -1800 , -1800 , -1800 , 0.8 , 0.8 , 0 , CatapultaModes.DOWN);
-            waitSeconds(0.02);
-
-            stopResetMotors();
-            autonomous(550 , -550 , 550 , -550, 0.7 , 0.7 , 0 , CatapultaModes.HOLD);
-            waitSeconds(0.02);
-
-            stopResetMotors();
-            autonomous(1900 , 1900 , -1900 , -1900, 0.8 , 0.8 , 0 , CatapultaModes.HOLD);
-            waitSeconds(0.02);*/
+            autonomous(-1750 , -1750 , -1750 , -1750, 0.8 , 0.8 , 0 , CatapultaModes.HOLD,1.26);
+            //waitSeconds(0.02);
 
             telemetry.update();
 
