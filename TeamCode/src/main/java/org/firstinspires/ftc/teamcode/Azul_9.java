@@ -26,7 +26,7 @@ public class Azul_9 extends AutoFunction {
 
             //strafe load 1
             stopResetMotors();
-            autonomous(800, -800, -800, 800, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.7);
+            autonomous(-800, 800, 800, -800, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.7);
 
             //load 1
             stopResetMotors();
@@ -42,7 +42,7 @@ public class Azul_9 extends AutoFunction {
 
             //strafe score 6 balls
             stopResetMotors();
-            autonomous(-1830, 1830, 1830, -1830, 0.8, 0.8, 0.7, CatapultaModes.HOLD, 1.17);
+            autonomous(1830, -1830, -1830, 1830, 0.8, 0.8, 0.7, CatapultaModes.HOLD, 1.17);
 
             //giro score 6 balls
             stopResetMotors();
@@ -66,7 +66,7 @@ public class Azul_9 extends AutoFunction {
 
             //strafe load 2
             stopResetMotors();
-            autonomous(2200, -2200, -2200, 2200, 0.8, 0.8, 0, CatapultaModes.HOLD, 2);
+            autonomous(-2200, 2200, 2200, -2200, 0.8, 0.8, 0, CatapultaModes.HOLD, 1.7);
 
             //load 2
             stopResetMotors();
@@ -82,7 +82,7 @@ public class Azul_9 extends AutoFunction {
 
             //strafe score 9 balls
             stopResetMotors();
-            autonomous(-2800, 2800, 2800, -2800, 0.8, 0.8, 0.7, CatapultaModes.HOLD, 2.57);
+            autonomous(2800, -2800, -2800, 2800, 0.8, 0.8, 0.7, CatapultaModes.HOLD, 2.57);
 
             //giro score 9 balls
             stopResetMotors();
@@ -100,7 +100,7 @@ public class Azul_9 extends AutoFunction {
             autonomous(-450, 450, -450, 450, 0.8, 0.8, 0, CatapultaModes.HOLD, 0.87);
 
             stopResetMotors();
-            autonomous(3000, -3000, -3000, 3000, 0.8, 0.8, 0, CatapultaModes.HOLD, 2.5);
+            autonomous(-3000, 3000, 3000, -3000, 0.8, 0.8, 0, CatapultaModes.HOLD, 2.5);
 
             stopResetMotors();
             autonomous(2200, 2200, 2200, 2200, 0.8, 0.8, 0.7, CatapultaModes.HOLD, 1.4);

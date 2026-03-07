@@ -31,8 +31,8 @@ public class DecodeTeletop extends LinearOpMode {
     public double FAT_DOWN_POS = 1.0;
     public double FAT_UP_POS = 0.0;
 
-    public double CATAPULTA_UP_POWER = 3.0;
-    public double CATAPULTA_DOWN_POWER = -3.0;
+    public double CATAPULTA_UP_POWER = 5.0;
+    public double CATAPULTA_DOWN_POWER = -5.0;
     public double CATAPULTA_HOLD_POWER = -0.15; // Small power to resist gravity
 
     public double SLOW_DRIVETRAIN = 0.3;
@@ -97,11 +97,12 @@ public class DecodeTeletop extends LinearOpMode {
             }*/
 
             double forward = -gamepad1.left_stick_y; // Reversed because Y is negative up
-            double strafe = gamepad1.left_stick_x;
+            double strafe = -gamepad1.left_stick_x;
             double rotate = -gamepad1.right_stick_x;
 
             // Choose one: drive() for robot-centric or driveFieldRelative() for field-centric
             driveFieldRelative(forward, strafe, rotate);
+
 
             // MECHANISM LOGIC (Gamepad 2)
 
@@ -145,6 +146,7 @@ public class DecodeTeletop extends LinearOpMode {
             // Telemetry
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Fat Mode", fatmode);
+            telemetry.addData("FatPos" , fat.getPosition());
             telemetry.addData("Catapult Mode", pivotMode);
             telemetry.addData("Heading", imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
             telemetry.update();
@@ -183,8 +185,8 @@ public class DecodeTeletop extends LinearOpMode {
         double robotHeading = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
 
         // Rotate the movement vectors by the robot's heading
-        double rotX = strafe * Math.cos(-robotHeading) - forward * Math.sin(-robotHeading);
-        double rotY = strafe * Math.sin(-robotHeading) + forward * Math.cos(-robotHeading);
+        double rotX = strafe * Math.cos(-robotHeading) + forward * Math.sin(-robotHeading);
+        double rotY = strafe * Math.sin(+robotHeading) + forward * Math.cos(+robotHeading);
 
         drive(rotY, rotX, rotate);
     }
